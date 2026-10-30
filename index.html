@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Worthrand Petropower & Worthwater Technology Corporation</title>
+<meta name="description" content="Worthrand Petropower Corporation (WPC) and Worthwater Technology Corporation (WTC) — 100% Filipino-owned companies supplying world-class industrial equipment in the Philippines.">
+<meta name="keywords" content="Ruhrpumpen Philippines, industrial pumps, Worthrand, Worthwater, WPC, WTC, industrial equipment Philippines">
+<meta name="author" content="Worthrand Petropower Corporation / Worthwater Technology Corporation">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Worthrand Petropower & Worthwater Technology Corporation">
+<meta property="og:description" content="100% Filipino-owned companies supplying world-class industrial equipment in the Philippines since 1996.">
+<meta property="og:url" content="https://razponce1.github.io/wpc/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #CC0000;
+  --red-dark: #A30000;
+  --navy: #1A1A6E;
+  --navy-dark: #0F0F4A;
+  --wtc-blue: #0B5FA8;
+  --white: #FFFFFF;
+  --off-white: #F8F8F8;
+  --gray: #6B7280;
+  --gray-border: #E5E7EB;
+  --text: #1F2937;
+  --green: #059669;
+  --ff-heading: 'Montserrat', sans-serif;
+  --ff-body: 'Open Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ===== CUSTOM SCROLLBAR ===== */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb { background: var(--red); border-radius: 100px; border: 2px solid var(--off-white); }
+::-webkit-scrollbar-thumb:hover { background: var(--red-dark); }
+body.wtc-active ::-webkit-scrollbar-thumb { background: var(--wtc-blue); }
+body.wtc-active ::-webkit-scrollbar-thumb:hover { background: #084a86; }
+html { scrollbar-color: var(--red) var(--off-white); }
+body.wtc-active { scrollbar-color: var(--wtc-blue) var(--off-white); }
+
+/* ===== SCROLL PROGRESS BAR ===== */
+#scrollProgress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--red), var(--navy-dark));
+  z-index: 1200;
+  transition: width 0.1s ease-out, background 0.4s ease;
+}
+body.wtc-active #scrollProgress {
+  background: linear-gradient(90deg, var(--wtc-blue), var(--navy-dark));
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--ff-body); color: var(--text); background: var(--off-white); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== COMPANY SWITCHER (in navbar) ===== */
+.nav-brand {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.nav-brand-chevron {
+  color: var(--gray);
+  margin-left: 4px;
+  transition: transform 0.2s ease;
+  vertical-align: middle;
+}
+
+.nav-brand.open .nav-brand-chevron {
+  transform: rotate(180deg);
+}
+
+.company-dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 0;
+  background: white;
+  border: 1px solid var(--gray-border);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px hsla(0,0%,0%,0.15);
+  padding: 6px;
+  width: 250px;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+  z-index: 1100;
+  cursor: default;
+}
+
+.company-dropdown.open {
+  display: flex;
+}
+
+.company-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--ff-body);
+  color: var(--navy-dark);
+  transition: background 0.15s ease;
+}
+
+.company-dropdown-item:hover {
+  background: var(--off-white);
+}
+
+.company-dropdown-item.active {
+  background: var(--off-white);
+}
+
+.company-dropdown-item strong {
+  font-family: var(--ff-heading);
+  font-size: 13px;
+  display: block;
+}
+
+.company-dropdown-item small {
+  font-size: 11px;
+  color: var(--gray);
+}
+
+.company-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--navy-dark);
+  border-bottom: 3px solid var(--red);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  transition: border-color 0.35s ease, height 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar.scrolled {
+  height: 60px;
+  background: hsla(232,60%,10%,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px hsla(0,0%,0%,0.25);
+}
+.navbar.scrolled .nav-logo-img { height: 38px; }
+.navbar.wtc-theme { border-bottom-color: var(--wtc-blue); }
+
+.nav-brand { display: flex; align-items: center; gap: 14px; }
+.nav-logo-img { height: 46px; width: auto; object-fit: contain; flex-shrink: 0; transition: opacity 0.2s ease, height 0.3s ease; }
+.nav-brand-text .name { font-family: var(--ff-heading); font-weight: 800; font-size: 15px; color: white; letter-spacing: 0.5px; line-height: 1.2; }
+.nav-brand-text .sub { font-size: 10px; color: hsla(0,0%,100%,0.55); letter-spacing: 0.08em; text-transform: uppercase; }
+
+.nav-links { display: flex; align-items: center; gap: 6px; list-style: none; }
+.nav-links a { color: hsla(0,0%,100%,0.8); font-size: 13px; font-weight: 500; padding: 8px 14px; border-radius: 6px; transition: 0.2s ease; font-family: var(--ff-heading); letter-spacing: 0.03em; }
+.nav-links a:hover { color: white; background: hsla(0,0%,100%,0.1); }
+.nav-links a.active { color: var(--red); }
+body.wtc-active .nav-links a.active { color: #5ab0f0; }
+.nav-cta { background: var(--red) !important; color: white !important; padding: 9px 20px !important; border-radius: 6px !important; }
+.nav-cta:hover { background: var(--red-dark) !important; }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+.hamburger span { width: 24px; height: 2px; background: white; border-radius: 2px; transition: 0.3s ease; }
+
+/* ===== SECTIONS ===== */
+.company-section { display: none; opacity: 0; }
+.company-section.active { display: block; opacity: 1; animation: sectionFadeIn 0.45s ease; }
+@keyframes sectionFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.nav-logo-img.fading { opacity: 0; }
+
+/* ===== PAGE TRANSITION OVERLAY (circular reveal) ===== */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  pointer-events: none;
+}
+.page-transition-circle {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--red), var(--navy-dark));
+  clip-path: circle(0px at var(--ox, 50%) var(--oy, 50%));
+  transition: clip-path 0.65s cubic-bezier(0.65,0,0.35,1);
+  will-change: clip-path;
+}
+.page-transition.wtc .page-transition-circle {
+  background: linear-gradient(135deg, var(--wtc-blue), var(--navy-dark));
+}
+.page-transition.run .page-transition-circle {
+  clip-path: circle(2200px at var(--ox, 50%) var(--oy, 50%));
+}
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #1a0000 100%);
+  display: flex; align-items: center;
+  position: relative; overflow: hidden;
+  padding: 130px 40px 60px;
+}
+
+.hero-bg-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 50%, hsla(0,100%,40%,0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, hsla(220,100%,50%,0.1) 0%, transparent 40%); animation: heroAmbient 20s ease-in-out infinite; transition: opacity 0.6s ease; }
+body.wtc-active .hero-bg-pattern { background-image: radial-gradient(circle at 20% 50%, hsla(206,100%,45%,0.16) 0%, transparent 50%), radial-gradient(circle at 80% 20%, hsla(0,100%,45%,0.08) 0%, transparent 40%); }
+@keyframes heroAmbient {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(2%, -2%) scale(1.06); }
+}
+.hero-grid-lines { position: absolute; inset: 0; background-image: linear-gradient(hsla(0,0%,100%,0.03) 1px, transparent 1px), linear-gradient(90deg, hsla(0,0%,100%,0.03) 1px, transparent 1px); background-size: 60px 60px; opacity: 0; animation: gridFadeIn 1.4s ease forwards; animation-delay: 0.2s; }
+@keyframes gridFadeIn { to { opacity: 1; } }
+
+.hero-grid-glow {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(hsla(0,90%,62%,0.4) 1px, transparent 1px), linear-gradient(90deg, hsla(0,90%,62%,0.4) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), white, transparent 70%);
+  mask-image: radial-gradient(circle 220px at var(--mx, 50%) var(--my, 50%), white, transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.hero:hover .hero-grid-glow { opacity: 1; }
+body.wtc-active .hero-grid-glow {
+  background-image: linear-gradient(hsla(206,85%,62%,0.4) 1px, transparent 1px), linear-gradient(90deg, hsla(206,85%,62%,0.4) 1px, transparent 1px);
+}
+
+/* ===== BLUEPRINT DRAW-IN ANIMATION ===== */
+.hero-blueprint-wrap {
+  position: absolute;
+  right: -20px;
+  bottom: -10px;
+  width: 460px;
+  max-width: 45vw;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-blueprint {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.55;
+}
+.bp-line {
+  fill: none;
+  stroke: hsla(0,90%,62%,0.75);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: bpDraw 1.8s cubic-bezier(0.65,0,0.35,1) forwards;
+}
+.bp-dash {
+  fill: none;
+  stroke: hsla(0,0%,100%,0.25);
+  stroke-width: 1;
+  stroke-dasharray: 4 4;
+}
+.bp-dot { fill: hsla(0,90%,62%,0.85); opacity: 0; animation: bpFade 0.4s ease forwards; }
+.bp-label { fill: hsla(0,0%,100%,0.5); font-size: 9px; font-family: var(--ff-heading); letter-spacing: 0.04em; opacity: 0; animation: bpFade 0.5s ease forwards; }
+body.wtc-active .bp-line { stroke: hsla(206,85%,62%,0.8); }
+body.wtc-active .bp-dot { fill: hsla(206,85%,62%,0.85); }
+
+.bp-d1 { animation-delay: 0s; }
+.bp-d2 { animation-delay: 0.25s; }
+.bp-d3 { animation-delay: 0.5s; }
+.bp-d4 { animation-delay: 0.75s; }
+.bp-d5 { animation-delay: 1s; }
+.bp-d6 { animation-delay: 1.2s; }
+.bp-d7 { animation-delay: 1.4s; }
+.bp-fade1 { animation-delay: 1.6s; }
+.bp-fade2 { animation-delay: 1.8s; }
+.bp-fade3 { animation-delay: 2s; }
+
+@keyframes bpDraw { to { stroke-dashoffset: 0; } }
+@keyframes bpFade { to { opacity: 1; } }
+
+.hero-blueprint-sweep {
+  position: absolute;
+  left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(hsla(0,90%,65%,0), hsla(0,90%,65%,0.12), hsla(0,90%,65%,0));
+  animation: bpSweep 4s ease-in-out infinite;
+  animation-delay: 2.2s;
+}
+body.wtc-active .hero-blueprint-sweep {
+  background: linear-gradient(hsla(206,85%,65%,0), hsla(206,85%,65%,0.14), hsla(206,85%,65%,0));
+}
+@keyframes bpSweep {
+  0% { top: -40%; }
+  100% { top: 100%; }
+}
+
+.hero-content { position: relative; z-index: 2; max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: hsla(0,100%,40%,0.15); border: 1px solid hsla(204,100%,40%,0.3); border-radius: 100px; padding: 6px 16px; font-size: 11px; font-weight: 600; color: #80AAFF; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+.hero-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--red); }
+
+.hero-title { font-family: var(--ff-heading); font-size: clamp(30px, 4.5vw, 52px); font-weight: 900; color: white; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; }
+.hero-title .accent { color: var(--red); }
+
+.hero-desc { font-size: 16px; color: hsla(0,0%,100%,0.7); line-height: 1.7; margin-bottom: 36px; max-width: 480px; }
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn-primary { background: var(--red); color: white; font-family: var(--ff-heading); font-weight: 700; font-size: 14px; padding: 14px 28px; border-radius: 8px; border: none; cursor: pointer; transition: 0.2s ease; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 8px; }
+.btn-primary:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 20px hsla(0,100%,40%,0.3); }
+
+.btn-outline { background: transparent; color: white; font-family: var(--ff-heading); font-weight: 600; font-size: 14px; padding: 14px 28px; border-radius: 8px; border: 1px solid hsla(0,0%,100%,0.3); cursor: pointer; transition: 0.2s ease; letter-spacing: 0.04em; display: inline-flex; align-items: center; gap: 8px; }
+.btn-outline:hover { border-color: white; background: hsla(0,0%,100%,0.08); }
+
+.hero-visual { display: flex; justify-content: center; align-items: center; }
+.hero-card { background: hsla(0,0%,100%,0.05); border: 1px solid hsla(0,0%,100%,0.1); border-radius: 20px; padding: 36px; width: 100%; max-width: 380px; backdrop-filter: blur(10px); }
+.hero-card-title { font-family: var(--ff-heading); font-size: 13px; font-weight: 700; color: hsla(0,0%,100%,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+.hero-stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.hero-stat { background: hsla(0,0%,100%,0.1); border: 1px solid hsla(0,0%,100%,0.1); border-radius: 12px; padding: 16px; }
+.hero-stat-num { font-family: var(--ff-heading); font-size: 28px; font-weight: 800; color: white; line-height: 1; margin-bottom: 4px; }
+.hero-stat-label { font-size: 11px; color: hsla(0,0%,100%,0.75); line-height: 1.3; }
+.hero-badge { background: hsla(0,100%,40%,0.15); border: 1px solid hsla(0,100%,40%,0.3); border-radius: 10px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; }
+.hero-badge-icon { width: 36px; height: 36px; background: var(--red); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.hero-badge-text .b-title { font-family: var(--ff-heading); font-size: 13px; font-weight: 700; color: white; }
+.hero-badge-text .b-sub { font-size: 11px; color: hsla(0,0%,100%,0.55); margin-top: 2px; }
+
+/* ===== TICKER (marquee) ===== */
+.ticker { background: var(--red); padding: 16px 0; overflow: hidden; white-space: nowrap; transition: background 0.4s ease; }
+.ticker-wtc { background: var(--wtc-blue); }
+.ticker-inner { display: inline-flex; animation: ticker 32s linear infinite; }
+.ticker:hover .ticker-inner { animation-play-state: paused; }
+.ticker-item { font-family: var(--ff-heading); font-size: 15px; font-weight: 800; color: white; letter-spacing: 0.1em; text-transform: uppercase; display: flex; align-items: center; gap: 14px; padding-right: 60px; }
+.ticker-item::before { content: "\25C6"; font-size: 9px; opacity: 0.6; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ===== SCROLL-DRIVEN CARD FAN ===== */
+.fan-section {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 0%, hsla(0,90%,45%,0.22), transparent 60%),
+    linear-gradient(180deg, var(--navy-dark), #070726);
+}
+.fan-section.fan-wtc {
+  background:
+    radial-gradient(ellipse at 50% 0%, hsla(206,85%,45%,0.26), transparent 60%),
+    linear-gradient(180deg, var(--navy-dark), #070726);
+}
+.fan-sticky {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 110px 20px 80px;
+}
+.fan-bg-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(hsla(0,0%,100%,0.05) 1px, transparent 1px), linear-gradient(90deg, hsla(0,0%,100%,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);
+  mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);
+  pointer-events: none;
+}
+.fan-heading { position: relative; z-index: 2; text-align: center; margin-bottom: 26px; }
+.fan-eyebrow { font-family: var(--ff-heading); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+.fan-wtc .fan-eyebrow { color: #4aa3ea; }
+.fan-title { font-family: var(--ff-heading); font-size: clamp(26px, 4.2vw, 52px); font-weight: 800; color: white; line-height: 1.1; letter-spacing: -0.5px; }
+.fan-title span { color: var(--red); }
+.fan-wtc .fan-title span { color: #4aa3ea; }
+.fan-stage {
+  --w: clamp(130px, 18vw, 250px);
+  position: relative;
+  width: 100%;
+  height: calc(var(--w) * 1.36 + 90px);
+  perspective: 1400px;
+  z-index: 1;
+}
+.fan-card {
+  position: absolute;
+  left: 50%; top: 0;
+  width: var(--w);
+  height: calc(var(--w) * 1.36);
+  margin-left: calc(var(--w) / -2);
+  border-radius: 22px;
+  overflow: hidden;
+  background: white;
+  border: 1px solid hsla(0,0%,100%,0.14);
+  box-shadow: 0 24px 50px hsla(0,0%,0%,0.45);
+  cursor: pointer;
+  transform-origin: 50% 115%;
+  will-change: transform;
+  transition: box-shadow 0.25s ease;
+}
+.fan-card:hover { box-shadow: 0 28px 60px hsla(0,90%,50%,0.4); }
+.fan-wtc .fan-card:hover { box-shadow: 0 28px 60px hsla(206,85%,50%,0.45); }
+.fan-card img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+.fan-label {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 30px 12px 12px;
+  background: linear-gradient(transparent, hsla(0,0%,0%,0.8));
+  color: white; text-align: center;
+  font-family: var(--ff-heading); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.fan-hint { position: relative; z-index: 2; margin-top: 18px; font-family: var(--ff-heading); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: hsla(0,0%,100%,0.55); }
+@media (prefers-reduced-motion: reduce) {
+  .ticker-inner { animation: none; }
+}
+
+/* ===== PRELOADER ===== */
+#preloader { position: fixed; inset: 0; z-index: 5000; animation: plFailsafe 0.01s linear 5s forwards; }
+@keyframes plFailsafe { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+.pl-panel { position: absolute; left: 0; right: 0; height: 50.3%; background: linear-gradient(135deg, var(--navy-dark), #070726); transition: transform 0.85s cubic-bezier(0.76,0,0.24,1); }
+.pl-top { top: 0; }
+.pl-bottom { bottom: 0; }
+.pl-top::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, transparent, var(--red), transparent); }
+.pl-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; transition: opacity 0.35s ease, transform 0.5s ease; }
+.pl-center img { height: 72px; width: auto; animation: plPulse 1.4s ease-in-out infinite; }
+@keyframes plPulse { 0%,100% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.06); opacity: 1; } }
+.pl-bar { width: 220px; height: 3px; background: hsla(0,0%,100%,0.12); border-radius: 100px; overflow: hidden; }
+.pl-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--red), #ff7a7a); animation: plFill 1.4s cubic-bezier(0.65,0,0.35,1) forwards; }
+@keyframes plFill { to { width: 100%; } }
+.pl-text { font-family: var(--ff-heading); font-size: 11px; letter-spacing: 0.32em; color: hsla(0,0%,100%,0.5); text-transform: uppercase; }
+#preloader.done { pointer-events: none; }
+#preloader.done .pl-center { opacity: 0; transform: scale(1.08); }
+#preloader.done .pl-top { transform: translateY(-101%); }
+#preloader.done .pl-bottom { transform: translateY(101%); }
+body.preloading .hero * { animation-play-state: paused !important; }
+
+/* ===== HERO INTRO (split headline) ===== */
+.hero .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.14em; margin-bottom: -0.14em; }
+.hero .wi { display: inline-block; }
+.hero.split-armed:not(.play) .wi { transform: translateY(118%); }
+.hero.split-armed.play .wi { transition: transform 0.95s cubic-bezier(0.16,1,0.3,1); transition-delay: calc(var(--i) * 85ms + 100ms); transform: none; }
+.hero.split-armed:not(.play) .hero-eyebrow,
+.hero.split-armed:not(.play) .hero-desc,
+.hero.split-armed:not(.play) .hero-actions,
+.hero.split-armed:not(.play) .hero-visual { opacity: 0; transform: translateY(28px); }
+.hero.split-armed.play .hero-eyebrow,
+.hero.split-armed.play .hero-desc,
+.hero.split-armed.play .hero-actions,
+.hero.split-armed.play .hero-visual { transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+.hero.split-armed.play .hero-eyebrow { transition-delay: 0s; }
+.hero.split-armed.play .hero-desc { transition-delay: 0.55s; }
+.hero.split-armed.play .hero-actions { transition-delay: 0.7s; }
+.hero.split-armed.play .hero-visual { transition-delay: 0.85s; }
+.btn-primary, .btn-outline { will-change: transform; }
+
+/* ===== STATEMENT (word-by-word scroll reveal) ===== */
+.statement-section { background: var(--off-white); padding: 100px 40px; position: relative; }
+.statement-inner { max-width: 860px; margin: 0 auto; }
+.statement-eyebrow { font-family: var(--ff-heading); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 22px; }
+.statement-wtc .statement-eyebrow { color: var(--wtc-blue); }
+.statement-text { font-family: var(--ff-heading); font-size: clamp(20px, 2.5vw, 34px); font-weight: 800; line-height: 1.35; letter-spacing: -0.3px; color: var(--navy-dark); }
+.statement-text em { font-style: normal; }
+.statement-text .sw { opacity: 0.13; transition: opacity 0.35s ease, color 0.35s ease; }
+.statement-text .sw.on { opacity: 1; }
+.statement-text .sw.hl.on { color: var(--red); }
+.statement-wtc .statement-text .sw.hl.on { color: var(--wtc-blue); }
+@media (prefers-reduced-motion: reduce) { #preloader { display: none; } .statement-text .sw { opacity: 1; } }
+
+/* ===== CARD GLARE ===== */
+.principal-card, .why-card { position: relative; overflow: hidden; }
+.principal-card::after, .why-card::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0; transition: opacity 0.25s ease; }
+.principal-card::after { background: radial-gradient(circle 190px at var(--gx, 50%) var(--gy, 50%), hsla(0,90%,58%,0.17), transparent 70%); }
+.why-card::after { background: radial-gradient(circle 190px at var(--gx, 50%) var(--gy, 50%), hsla(0,0%,100%,0.16), transparent 70%); }
+body.wtc-active .principal-card::after { background: radial-gradient(circle 190px at var(--gx, 50%) var(--gy, 50%), hsla(206,85%,55%,0.2), transparent 70%); }
+.principal-card:hover::after, .why-card:hover::after { opacity: 1; }
+
+/* ===== STORY VIDEO PLAYER (timeline, play/pause) ===== */
+.story { --fh: min(54vh, 46vw); --fw: calc(var(--fh) * 2); position: relative; padding: 90px 20px 80px;
+  background: radial-gradient(ellipse at 50% 0%, hsla(0,90%,45%,0.2), transparent 60%), linear-gradient(180deg, #070726, var(--navy-dark)); }
+.story-wtc { background: radial-gradient(ellipse at 50% 0%, hsla(206,85%,45%,0.24), transparent 60%), linear-gradient(180deg, #070726, var(--navy-dark)); }
+.story-inner { display: flex; flex-direction: column; align-items: center; }
+.story-head { text-align: center; margin-bottom: 18px; }
+.story-eyebrow { font-family: var(--ff-heading); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+.story-wtc .story-eyebrow { color: #4aa3ea; }
+.story-title { font-family: var(--ff-heading); font-size: clamp(20px, 2.6vw, 34px); font-weight: 800; color: white; letter-spacing: -0.3px; }
+.story-frame { position: relative; height: var(--fh); width: var(--fw); max-width: 94vw; border-radius: 22px; overflow: hidden; border: 1px solid hsla(0,0%,100%,0.14); background: radial-gradient(circle at 50% 50%, hsl(232,55%,17%), #05051a); box-shadow: 0 30px 70px hsla(0,0%,0%,0.5); }
+.story-frame::before { content: ""; position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(hsla(0,0%,100%,0.05) 1px, transparent 1px), linear-gradient(90deg, hsla(0,0%,100%,0.05) 1px, transparent 1px); background-size: 40px 40px; }
+.story-cam { position: absolute; inset: 0; z-index: 1; transform-origin: 0 0; will-change: transform; }
+.story-cam > svg, .story-cam > img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.story-cam > img { object-fit: cover; }
+.story-cam > img + img { opacity: 0; }
+.story-hud { position: absolute; left: 14px; top: 12px; z-index: 3; padding: 6px 12px; border-radius: 100px; background: hsla(232,60%,8%,0.62); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-family: var(--ff-heading); font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: hsla(0,0%,100%,0.88); }
+.story-caps { position: relative; width: var(--fw); max-width: 94vw; height: clamp(150px, 24vh, 200px); margin-top: 18px; }
+.story-cap { position: absolute; left: 0; top: 0; right: 0; opacity: 0; will-change: opacity, transform; pointer-events: none; }
+.cap-kicker { font-family: var(--ff-heading); font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+.story-wtc .cap-kicker { color: #4aa3ea; }
+.cap-big { font-family: var(--ff-heading); font-size: clamp(30px, min(6vw, 9vh), 80px); font-weight: 800; line-height: 1; letter-spacing: -1px; color: white; }
+.cap-small { max-width: 520px; margin-top: 10px; font-size: clamp(13px, 1.25vw, 16px); line-height: 1.55; color: hsla(0,0%,100%,0.72); }
+.story-svg { overflow: visible; }
+.st-dash { stroke: hsla(0,0%,100%,0.28); stroke-width: 1; stroke-dasharray: 5 5; fill: none; }
+.sl { fill: none; stroke: hsla(0,90%,66%,0.9); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+.story.in .sl { animation: bpDraw 1.7s cubic-bezier(0.65,0,0.35,1) forwards; animation-delay: var(--d, 0s); }
+.story.paused .sl { animation-play-state: paused; }
+.sl-g .sl { animation-delay: .8s !important; }
+.sl-g { transform-origin: 400px 260px; animation: impSpin 14s linear infinite; animation-delay: 2.4s; }
+@keyframes impSpin { to { transform: rotate(-360deg); } }
+.st-flow { fill: none; stroke: #ff8a8a; stroke-width: 3.2; stroke-linecap: round; stroke-dasharray: 0.1 13; opacity: 0; filter: drop-shadow(0 0 5px hsla(0,90%,60%,0.9)); animation: flowUp 1.6s linear infinite; transition: opacity 1s ease 2.2s; }
+.story.in .st-flow { opacity: 1; }
+@keyframes flowUp { to { stroke-dashoffset: -26.2; } }
+.story.paused .sl-g, .story.paused .st-flow { animation-play-state: paused; }
+.st-bolt { fill: hsla(0,90%,66%,0.9); }
+.hl { opacity: 0; transition: opacity 0.5s ease; }
+.hl circle, .hl rect, .hl ellipse, .hl path { fill: none; stroke: #ff4d4d; stroke-width: 1.6; filter: drop-shadow(0 0 6px hsla(0,90%,60%,0.85)); }
+.hl text { fill: white; stroke: none; font-family: var(--ff-heading); font-size: 11px; font-weight: 700; letter-spacing: 1.5px; filter: none; }
+.hl-4 ellipse { stroke-dasharray: 3 7; stroke-width: 1.2; }
+.story[data-active="1"] .hl-1, .story[data-active="2"] .hl-2, .story[data-active="3"] .hl-3, .story[data-active="4"] .hl-4 { opacity: 1; }
+@media (max-width: 700px) {
+  .story { --fh: min(46vh, 72vw); --fw: 94vw; padding: 70px 14px 60px; }
+  .story-caps { height: 180px; }
+  .story-hud { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) { .sl { stroke-dashoffset: 0; animation: none !important; } }
+
+/* ===== INQUIRE BUTTON (gallery modal footer) ===== */
+.principal-modal-foot { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 14px 20px; border-top: 1px solid var(--gray-border); background: white; }
+.pm-foot-text { font-family: var(--ff-body); font-size: 14px; color: var(--gray); }
+.pm-foot-text strong { color: var(--navy-dark); }
+.pm-inquire { background: var(--red); color: white; border: none; border-radius: 100px; padding: 11px 24px; font-family: var(--ff-heading); font-weight: 700; font-size: 13px; letter-spacing: 0.03em; cursor: pointer; box-shadow: 0 8px 20px hsla(0,90%,45%,0.3); transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease; }
+.pm-inquire:hover { transform: translateY(-2px); box-shadow: 0 12px 26px hsla(0,90%,45%,0.4); }
+body.wtc-active .pm-inquire { background: var(--wtc-blue); box-shadow: 0 8px 20px hsla(206,85%,40%,0.35); }
+.form-flash { border-radius: 14px; animation: formFlash 1.8s ease; }
+@keyframes formFlash { 0% { box-shadow: 0 0 0 0 hsla(0,90%,55%,0.55); } 100% { box-shadow: 0 0 0 22px hsla(0,90%,55%,0); } }
+body.wtc-active .form-flash { animation-name: formFlashBlue; }
+@keyframes formFlashBlue { 0% { box-shadow: 0 0 0 0 hsla(206,85%,50%,0.55); } 100% { box-shadow: 0 0 0 22px hsla(206,85%,50%,0); } }
+
+/* ===== PRODUCT SEARCH / FILTER ===== */
+.pf-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; margin: -16px 0 28px; }
+.pf-search { position: relative; flex: 1 1 280px; max-width: 420px; display: block; }
+.pf-search svg { position: absolute; left: 16px; top: 50%; width: 17px; height: 17px; margin-top: -8.5px; fill: none; stroke: var(--gray); stroke-width: 2; stroke-linecap: round; pointer-events: none; }
+.pf-search input { width: 100%; padding: 13px 16px 13px 44px; border: 1px solid var(--gray-border); border-radius: 100px; font-family: var(--ff-body); font-size: 14px; color: var(--navy-dark); background: white; outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; -webkit-appearance: none; appearance: none; }
+.pf-search input:focus { border-color: var(--red); box-shadow: 0 0 0 4px hsla(0,90%,50%,0.1); }
+body.wtc-active .pf-search input:focus { border-color: var(--wtc-blue); box-shadow: 0 0 0 4px hsla(206,85%,45%,0.14); }
+.pf-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.pf-chip { border: 1px solid var(--gray-border); background: white; color: var(--navy-dark); border-radius: 100px; padding: 8px 15px; font-family: var(--ff-heading); font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s ease; }
+.pf-chip:hover { border-color: var(--red); color: var(--red); }
+.pf-chip.on { background: var(--red); border-color: var(--red); color: white; }
+body.wtc-active .pf-chip:hover { border-color: var(--wtc-blue); color: var(--wtc-blue); }
+body.wtc-active .pf-chip.on { background: var(--wtc-blue); border-color: var(--wtc-blue); color: white; }
+.pf-count { font-family: var(--ff-heading); font-size: 12px; font-weight: 600; color: var(--gray); margin-left: auto; }
+.pf-empty { text-align: center; padding: 48px 20px; border: 1px dashed var(--gray-border); border-radius: 16px; color: var(--gray); font-size: 15px; line-height: 1.7; }
+.pf-empty strong { color: var(--navy-dark); }
+.pf-empty button { background: none; border: none; padding: 0; font: inherit; font-weight: 700; color: var(--red); text-decoration: underline; cursor: pointer; }
+body.wtc-active .pf-empty button { color: var(--wtc-blue); }
+.pf-pop { animation: pfPop 0.4s ease; }
+@keyframes pfPop { from { opacity: 0; transform: translateY(10px) scale(0.97); } to { opacity: 1; transform: none; } }
+
+/* ===== MOBILE POLISH ===== */
+.principal-card, .fan-card, .pf-chip, .pm-inquire { -webkit-tap-highlight-color: transparent; }
+.hero { min-height: 100vh; min-height: 100svh; }
+@media (max-width: 768px) {
+  .section::before, .section::after { display: none; }
+  .hero-grid-glow { display: none; }
+  .hero-blueprint-wrap { opacity: 0.3; max-width: 55vw; right: -34px; }
+  .hero-bg-pattern { animation: none; }
+  .pf-bar { margin-top: -28px; }
+  .pf-search { max-width: none; flex-basis: 100%; }
+  .pf-chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 -20px; padding: 2px 20px 6px; width: calc(100% + 40px); -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .pf-chips::-webkit-scrollbar { display: none; }
+  .pf-chip { flex-shrink: 0; }
+  .pf-count { margin-left: 0; }
+  .principal-modal { padding: 10px; }
+  .principal-modal-box { max-height: 92vh; border-radius: 14px; }
+  .principal-modal-body { padding: 10px 12px; }
+  .principal-modal-foot { padding: 12px 14px; }
+  .pm-inquire { width: 100%; padding: 14px 20px; font-size: 14px; }
+  .ticker-item { font-size: 13px; padding-right: 40px; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 130px 18px 50px; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions a, .hero-actions button { justify-content: center; text-align: center; }
+  .navbar { padding: 0 14px; }
+  .nav-brand { gap: 10px; }
+  .nav-logo-img { height: 38px; }
+  .nav-brand-text .name { font-size: 14px; }
+  .nav-brand-text .sub { font-size: 9px; letter-spacing: 0.04em; }
+  .fan-sticky { padding: 90px 12px 60px; }
+  .statement-section { padding: 70px 20px; }
+}
+
+/* ===== SECTION COMMONS ===== */
+.section { padding: 90px 40px; width: 100%; position: relative; overflow: hidden; }
+.section-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.section::before, .section::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.13;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 0.6s ease;
+}
+.section::before {
+  width: 420px; height: 420px;
+  background: var(--red);
+  top: -140px; left: -120px;
+  animation: ambientFloat1 24s ease-in-out infinite;
+}
+.section::after {
+  width: 380px; height: 380px;
+  background: var(--navy);
+  bottom: -140px; right: -100px;
+  animation: ambientFloat2 28s ease-in-out infinite;
+}
+body.wtc-active .section::before { background: var(--wtc-blue); }
+body.wtc-active .section::after { background: var(--navy-dark); }
+@keyframes ambientFloat1 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(70px, 50px) scale(1.18); }
+}
+@keyframes ambientFloat2 {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-55px, -35px) scale(1.12); }
+}
+.section-eyebrow { font-family: var(--ff-heading); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+.section-title { font-family: var(--ff-heading); font-size: clamp(24px, 3.5vw, 38px); font-weight: 800; color: var(--navy-dark); line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 16px; }
+.section-desc { font-size: 16px; color: var(--gray); line-height: 1.7; max-width: 580px; }
+.section-header { margin-bottom: 56px; }
+
+/* ===== ABOUT ===== */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+.about-main-card { background: var(--navy-dark); border-radius: 18px; padding: 40px; color: white; position: relative; overflow: hidden; }
+.about-main-card::before { content: ""; position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; border-radius: 50%; background: hsla(0,100%,40%,0.15); }
+.about-wpc-logo { font-family: var(--ff-heading); font-size: 22px; font-weight: 800; color: var(--red); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; line-height: 1.3; }
+.about-est { font-size: 13px; color: hsla(0,0%,100%,0.7); line-height: 1.6; }
+.about-float-badge { background: white; border-radius: 14px; padding: 16px 20px; box-shadow: 0 20px 40px hsla(0,0%,0%,0.15); display: flex; align-items: center; gap: 12px; margin-top: 20px; }
+.float-icon { width: 40px; height: 40px; background: var(--red); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.float-info .fi-num { font-family: var(--ff-heading); font-size: 18px; font-weight: 800; color: var(--navy-dark); }
+.float-info .fi-label { font-size: 11px; color: var(--gray); }
+
+.about-text .section-desc { margin-bottom: 28px; }
+.about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 32px; }
+.highlight-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text); line-height: 1.5; }
+.highlight-item::before { content: "✓"; width: 20px; height: 20px; background: var(--red); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+/* ===== MARKETS ===== */
+.markets-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.market-item { background: hsla(0,0%,100%,0.08); border: 1px solid hsla(0,0%,100%,0.12); border-radius: 12px; padding: 18px 14px; text-align: center; color: white; font-family: var(--ff-heading); font-size: 13px; font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 8px; transition: 0.2s ease; }
+.market-item:hover { background: hsla(0,100%,40%,0.2); border-color: var(--red); }
+.market-icon { font-size: 24px; }
+
+/* ===== VMO ===== */
+.vmo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.vmo-card { border-radius: 18px; padding: 32px; }
+.vmo-vision { background: var(--navy-dark); color: white; }
+.vmo-mission { background: var(--red); color: white; }
+.vmo-objective { background: var(--off-white); color: var(--text); border: 1px solid var(--gray-border); }
+.vmo-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+.vmo-label { font-family: var(--ff-heading); font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.65; margin-bottom: 10px; }
+.vmo-title { font-family: var(--ff-heading); font-size: 17px; font-weight: 800; line-height: 1.3; margin-bottom: 14px; }
+.vmo-objective .vmo-title { color: var(--navy-dark); }
+.vmo-text { font-size: 13px; line-height: 1.7; opacity: 0.85; }
+.vmo-objective .vmo-text { opacity: 1; color: var(--gray); }
+
+/* ===== VALUES ===== */
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.value-card { background: white; border: 1px solid var(--gray-border); border-radius: 16px; padding: 28px; transition: 0.25s ease; position: relative; overflow: hidden; }
+.value-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: 0.3s ease; }
+.value-card:hover { box-shadow: 0 12px 30px hsla(0,100%,40%,0.1); transform: translateY(-4px); border-color: var(--red); }
+.value-card:hover::before { transform: scaleX(1); }
+.value-icon { font-size: 28px; margin-bottom: 12px; display: block; }
+.value-name { font-family: var(--ff-heading); font-size: 15px; font-weight: 700; color: var(--navy-dark); margin-bottom: 10px; }
+.value-desc { font-size: 13px; color: var(--gray); line-height: 1.65; }
+
+/* ===== SERVICES ===== */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.service-card { border: 1px solid var(--gray-border); border-radius: 16px; padding: 30px; transition: 0.25s ease; position: relative; overflow: hidden; background: white; }
+.service-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: 0.3s ease; }
+.service-card:hover { border-color: var(--red); box-shadow: 0 12px 30px hsla(0,100%,40%,0.1); transform: translateY(-4px); }
+.service-card:hover::before { transform: scaleX(1); }
+.service-icon { width: 56px; height: 56px; background: hsla(0,100%,40%,0.08); border: 1px solid hsla(0,100%,40%,0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 18px; }
+.service-name { font-family: var(--ff-heading); font-size: 16px; font-weight: 700; color: var(--navy-dark); margin-bottom: 10px; }
+.service-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+/* ===== PRINCIPALS (WTC) ===== */
+.principals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.principal-card { background: white; border: 1px solid var(--gray-border); border-radius: 16px; padding: 24px; transition: 0.25s ease; }
+.principal-card:hover { box-shadow: 0 12px 28px hsla(0,0%,0%,0.08); transform: translateY(-3px); }
+.principal-modal { display: flex; position: fixed; inset: 0; background: hsla(0,0%,0%,0); z-index: 2000; align-items: center; justify-content: center; padding: 20px; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.3s ease, background 0.3s ease, visibility 0s linear 0.3s; }
+.principal-modal.open { opacity: 1; visibility: visible; background: hsla(0,0%,0%,0.65); pointer-events: auto; transition: opacity 0.3s ease, background 0.3s ease, visibility 0s linear 0s; }
+.principal-modal-box { background: white; border-radius: 16px; max-width: 900px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; overflow: hidden; opacity: 0; transform: scale(0.92) translateY(16px); transition: opacity 0.3s cubic-bezier(0.34,1.56,0.64,1), transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+.principal-modal.open .principal-modal-box { opacity: 1; transform: scale(1) translateY(0); }
+.principal-modal-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--gray-border); }
+.principal-modal-title { font-family: var(--ff-heading); font-weight: 800; font-size: 18px; color: var(--navy-dark); }
+.principal-modal-close { background: none; border: none; font-size: 28px; line-height: 1; cursor: pointer; color: var(--gray); transition: transform 0.2s ease, color 0.2s ease; }
+.principal-modal-close:hover { color: var(--red); transform: rotate(90deg); }
+.principal-modal-body { overflow-y: auto; padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; min-height: 120px; }
+.principal-modal-body img { width: 100%; border-radius: 8px; border: 1px solid var(--gray-border); display: block; background: var(--off-white); opacity: 0; animation: imgFadeIn 0.45s ease forwards; }
+@keyframes imgFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.principal-modal-loading { display: flex; align-items: center; justify-content: center; padding: 60px 0; color: var(--gray); font-family: var(--ff-heading); font-size: 13px; gap: 10px; }
+.principal-modal-spinner { width: 18px; height: 18px; border: 2px solid var(--gray-border); border-top-color: var(--red); border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.principal-card:hover { border-color: var(--red); box-shadow: 0 8px 20px hsla(0,0%,0%,0.08); transform: translateY(-3px); }
+.principal-country { font-size: 10px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+.principal-name { font-family: var(--ff-heading); font-size: 15px; font-weight: 700; color: var(--navy-dark); margin-bottom: 10px; }
+.principal-products { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.principal-products li { font-size: 12px; color: var(--gray); padding-left: 14px; position: relative; line-height: 1.5; }
+.principal-products li::before { content: "•"; color: var(--red); position: absolute; left: 0; font-weight: 700; }
+
+/* ===== WHY US ===== */
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.why-card { background: hsla(0,0%,100%,0.05); border: 1px solid hsla(0,0%,100%,0.1); border-radius: 16px; padding: 28px 24px; text-align: center; transition: 0.2s ease; }
+.why-card:hover { background: hsla(0,0%,100%,0.08); border-color: var(--red); }
+.why-num { font-family: var(--ff-heading); font-size: 36px; font-weight: 900; color: white; line-height: 1; margin-bottom: 6px; }
+.why-label { font-size: 13px; color: hsla(0,0%,100%,0.7); line-height: 1.4; }
+
+/* ===== NEWS ===== */
+.news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.news-card { background: white; border-radius: 16px; overflow: hidden; border: 1px solid var(--gray-border); transition: 0.25s ease; }
+.news-card:hover { box-shadow: 0 12px 30px hsla(0,0%,0%,0.1); transform: translateY(-3px); }
+.news-img { height: 160px; background: var(--navy-dark); display: flex; align-items: center; justify-content: center; font-size: 48px; position: relative; overflow: hidden; }
+.news-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 40%, hsla(0,0%,0%,0.4)); }
+.news-tag { position: absolute; bottom: 12px; left: 12px; background: var(--red); color: white; font-size: 10px; font-weight: 700; padding: 4px 10px; border-radius: 100px; z-index: 1; text-transform: uppercase; letter-spacing: 0.06em; }
+.news-body { padding: 20px; }
+.news-date { font-size: 11px; color: var(--gray); margin-bottom: 8px; font-family: var(--ff-heading); letter-spacing: 0.04em; }
+.news-title { font-family: var(--ff-heading); font-size: 15px; font-weight: 700; color: var(--navy-dark); line-height: 1.4; margin-bottom: 10px; }
+.news-excerpt { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+/* ===== MANUFACTURERS ===== */
+.mfr-block { background: var(--off-white); border: 1px solid var(--gray-border); border-radius: 18px; padding: 36px; }
+.mfr-header { display: flex; align-items: flex-start; gap: 18px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--gray-border); }
+.mfr-icon { width: 52px; height: 52px; background: var(--navy-dark); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.mfr-label { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px; }
+.mfr-name { font-family: var(--ff-heading); font-size: 18px; font-weight: 800; color: var(--navy-dark); margin-bottom: 4px; }
+.mfr-sub { font-size: 13px; color: var(--gray); }
+.mfr-two-col { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.mfr-brand-group { background: white; border: 1px solid var(--gray-border); border-radius: 14px; padding: 20px; }
+.mfr-group-title { font-family: var(--ff-heading); font-size: 13px; font-weight: 700; color: var(--navy-dark); margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--gray-border); }
+.brand-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.brand-tag { background: var(--off-white); border: 1px solid var(--gray-border); border-radius: 100px; padding: 5px 12px; font-size: 12px; font-weight: 500; color: var(--text); transition: 0.2s ease; }
+.brand-tag:hover { background: var(--red); color: white; border-color: var(--red); }
+
+/* ===== CONTACT ===== */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+.contact-info-title { font-family: var(--ff-heading); font-size: 22px; font-weight: 800; color: var(--navy-dark); margin-bottom: 8px; }
+.contact-info-sub { font-size: 14px; color: var(--gray); margin-bottom: 32px; line-height: 1.6; }
+.contact-detail { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+.cd-icon { width: 42px; height: 42px; background: hsla(0,100%,40%,0.08); border: 1px solid hsla(0,100%,40%,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.cd-info .cd-label { font-size: 11px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 3px; }
+.cd-info .cd-value { font-size: 14px; color: var(--text); line-height: 1.5; font-weight: 500; }
+
+.contact-form { background: var(--off-white); border: 1px solid var(--gray-border); border-radius: 18px; padding: 36px; }
+.form-title { font-family: var(--ff-heading); font-size: 18px; font-weight: 700; color: var(--navy-dark); margin-bottom: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+.form-field label { font-size: 12px; font-weight: 600; color: var(--text); letter-spacing: 0.02em; }
+.form-field input, .form-field select, .form-field textarea { background: white; border: 1px solid var(--gray-border); border-radius: 10px; padding: 11px 14px; font-family: var(--ff-body); font-size: 14px; color: var(--text); outline: none; transition: 0.2s ease; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--red); box-shadow: 0 0 0 3px hsla(0,100%,40%,0.08); }
+.form-field textarea { resize: vertical; min-height: 110px; }
+.form-submit { width: 100%; background: var(--red); color: white; font-family: var(--ff-heading); font-weight: 700; font-size: 15px; padding: 14px; border-radius: 10px; border: none; cursor: pointer; transition: 0.2s ease; letter-spacing: 0.04em; }
+.form-submit:hover { background: var(--red-dark); }
+
+.map-container { margin-bottom: 40px; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px hsla(0,0%,0%,0.1); }
+
+/* ===== FOOTER ===== */
+footer { background: var(--navy-dark); color: white; padding: 60px 40px 30px; width: 100%; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand .brand-name { font-family: var(--ff-heading); font-size: 20px; font-weight: 800; color: white; margin-bottom: 4px; }
+.footer-brand .brand-sub { font-size: 11px; color: hsla(0,0%,100%,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
+.footer-brand p { font-size: 13px; color: hsla(0,0%,100%,0.6); line-height: 1.7; }
+.footer-col h4 { font-family: var(--ff-heading); font-size: 12px; font-weight: 700; color: hsla(0,0%,100%,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { font-size: 13px; color: hsla(0,0%,100%,0.65); transition: 0.2s ease; }
+.footer-col ul a:hover { color: var(--red); }
+.footer-bottom { border-top: 1px solid hsla(0,0%,100%,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-bottom p { font-size: 12px; color: hsla(0,0%,100%,0.4); }
+.footer-red { color: var(--red) !important; }
+
+/* ===== MOBILE ===== */
+.mobile-menu { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--navy-dark); border-bottom: 3px solid var(--red); padding: 20px; z-index: 999; flex-direction: column; gap: 4px; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { color: hsla(0,0%,100%,0.8); font-family: var(--ff-heading); font-size: 14px; font-weight: 500; padding: 12px 16px; border-radius: 8px; transition: 0.2s ease; }
+.mobile-menu a:hover { background: hsla(0,0%,100%,0.08); color: white; }
+
+/* ===== FLOATING BUTTONS ===== */
+#backToTop { position: fixed; bottom: 90px; right: 30px; width: 45px; height: 45px; background: var(--navy-dark); color: white; border: none; border-radius: 50%; font-size: 20px; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 15px hsla(0,0%,0%,0.3); z-index: 999; transition: 0.2s ease; }
+
+/* ===== ANIMATIONS ===== */
+.fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+.fade-in-left { opacity: 0; transform: translateX(-30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in-left.visible { opacity: 1; transform: translateX(0); }
+.fade-in-right { opacity: 0; transform: translateX(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in-right.visible { opacity: 1; transform: translateX(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .services-grid, .principals-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .markets-grid { grid-template-columns: repeat(3, 1fr); }
+  .vmo-grid { grid-template-columns: 1fr; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .mfr-two-col { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .navbar { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .hero { padding: 150px 20px 60px; }
+  .hero-content { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { display: none; }
+  .section { padding: 60px 20px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .services-grid, .principals-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .news-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 30px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .form-row { grid-template-columns: 1fr; }
+  .markets-grid { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: 1fr; }
+  .mfr-two-col { grid-template-columns: 1fr; }
+  .company-toggle-bar { padding: 8px 20px; }
+}
+</style>
+</head>
+<body class="preloading">
+<div id="scrollProgress"></div>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div class="pl-panel pl-top"></div>
+  <div class="pl-panel pl-bottom"></div>
+  <div class="pl-center">
+    <img src="./images/logo.png" alt="">
+    <div class="pl-bar"><span></span></div>
+    <div class="pl-text">Worthrand &middot; Worthwater</div>
+  </div>
+</div>
+<script>setTimeout(function(){var p=document.getElementById('preloader');if(p){p.classList.add('done');}document.body.classList.remove('preloading');},5200);</script>
+
+<!-- COMPANY TOGGLE BAR -->
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="nav-brand" id="companySwitcherToggle" onclick="toggleCompanyDropdown(event)">
+    <img src="./images/logo.png" alt="Logo" class="nav-logo-img" id="navLogo">
+    <div class="nav-brand-text">
+      <div class="name" id="navName">WORTHRAND</div>
+      <div class="sub" id="navSub">Petropower Corporation</div>
+    </div>
+    <svg class="nav-brand-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div class="company-dropdown" id="companyDropdown">
+      <button class="company-dropdown-item active" id="ddWPC" onclick="switchCompany('wpc', event); event.stopPropagation();">
+        <span class="company-dot" style="background: var(--red);"></span>
+        <span><strong>Worthrand Petropower</strong><br><small>WPC</small></span>
+      </button>
+      <button class="company-dropdown-item" id="ddWTC" onclick="switchCompany('wtc', event); event.stopPropagation();">
+        <span class="company-dot" style="background: var(--wtc-blue);"></span>
+        <span><strong>Worthwater Technology</strong><br><small>WTC</small></span>
+      </button>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home" class="active" id="navHomeLink">Home</a></li>
+    <li><a href="#about" id="navAboutLink">About</a></li>
+    <li><a href="#services" id="navServicesLink">Services</a></li>
+    <li><a href="#why" id="navWhyLink">Why Us</a></li>
+    <li><a href="#news" id="navNewsLink">News</a></li>
+    <li><a href="#contact" class="nav-cta" id="navContactLink">Contact Us</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" id="mobHomeLink">Home</a>
+  <a href="#about" id="mobAboutLink">About</a>
+  <a href="#services" id="mobServicesLink">Services</a>
+  <a href="#why" id="mobWhyLink">Why Us</a>
+  <a href="#news" id="mobNewsLink">News</a>
+  <a href="#contact" id="mobContactLink">Contact Us</a>
+</div>
+
+<!-- ==================== WPC SECTION ==================== -->
+<div class="company-section active" id="section-wpc">
+
+<!-- HERO WPC -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-grid-glow"></div>
+<div class="hero-blueprint-wrap">
+  <svg class="hero-blueprint" viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg">
+    <path class="bp-line bp-d1" pathLength="1" d="M10,30 L10,10 L30,10" />
+    <path class="bp-line bp-d1" pathLength="1" d="M430,10 L450,10 L450,30" />
+    <path class="bp-line bp-d1" pathLength="1" d="M450,350 L450,370 L430,370" />
+    <path class="bp-line bp-d1" pathLength="1" d="M30,370 L10,370 L10,350" />
+    <line class="bp-dash" x1="20" y1="190" x2="440" y2="190" />
+    <line class="bp-dash" x1="230" y1="20" x2="230" y2="360" />
+    <circle class="bp-line bp-d2" pathLength="1" cx="230" cy="190" r="95" />
+    <circle class="bp-line bp-d3" pathLength="1" cx="230" cy="190" r="48" />
+    <line class="bp-line bp-d4" pathLength="1" x1="230" y1="142" x2="230" y2="238" />
+    <line class="bp-line bp-d4" pathLength="1" x1="182" y1="190" x2="278" y2="190" />
+    <line class="bp-line bp-d4" pathLength="1" x1="196" y1="156" x2="264" y2="224" />
+    <line class="bp-line bp-d4" pathLength="1" x1="264" y1="156" x2="196" y2="224" />
+    <circle class="bp-dot bp-fade1" cx="230" cy="190" r="4" />
+    <line class="bp-line bp-d5" pathLength="1" x1="20" y1="175" x2="150" y2="175" />
+    <line class="bp-line bp-d5" pathLength="1" x1="20" y1="205" x2="150" y2="205" />
+    <line class="bp-line bp-d5" pathLength="1" x1="20" y1="175" x2="20" y2="205" />
+    <line class="bp-line bp-d5" pathLength="1" x1="215" y1="95" x2="215" y2="25" />
+    <line class="bp-line bp-d5" pathLength="1" x1="245" y1="95" x2="245" y2="25" />
+    <line class="bp-line bp-d5" pathLength="1" x1="215" y1="25" x2="245" y2="25" />
+    <path class="bp-line bp-d6" pathLength="1" d="M290,120 A100,100 0 0 1 320,190" />
+    <path class="bp-line bp-d6" pathLength="1" d="M312,178 L320,190 L306,194" />
+    <line class="bp-line bp-d6" pathLength="1" x1="135" y1="330" x2="325" y2="330" />
+    <line class="bp-line bp-d6" pathLength="1" x1="135" y1="322" x2="135" y2="338" />
+    <line class="bp-line bp-d6" pathLength="1" x1="325" y1="322" x2="325" y2="338" />
+    <text class="bp-label bp-fade2" x="195" y="352">&#216;190mm</text>
+    <text class="bp-label bp-fade3" x="30" y="165">INLET</text>
+    <text class="bp-label bp-fade3" x="252" y="18">OUTLET</text>
+  </svg>
+  <div class="hero-blueprint-sweep"></div>
+</div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Ruhrpumpen Pump Solutions — Philippines</div>
+      <h1 class="hero-title">Industrial <span class="accent">Pump</span> &amp; Power Solutions</h1>
+      <p class="hero-desc">Worthrand Petropower Corporation is a 100% Filipino-owned company and a Ruhrpumpen pump partner in the Philippines — delivering world-class industrial equipment to the oil, gas, chemical, and power sectors.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Our Services ›</a>
+        <a href="#contact" class="btn-outline">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-title">Company Overview</div>
+        <div class="hero-stat-row">
+          <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Filipino Owned</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">44+</div><div class="hero-stat-label">Global Suppliers</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">751+</div><div class="hero-stat-label">Import Shipments</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">PH</div><div class="hero-stat-label">Exclusive Territory</div></div>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-icon">⚙️</div>
+          <div class="hero-badge-text">
+            <div class="b-title">Ruhrpumpen Partner</div>
+            <div class="b-sub">SEC Registered · Parañaque City, PH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER WPC -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Ruhrpumpen Pumps</span>
+    <span class="ticker-item">Industrial Process Pumps</span>
+    <span class="ticker-item">Chemical Pumps</span>
+    <span class="ticker-item">Gear Pumps</span>
+    <span class="ticker-item">Oil & Gas Pumps</span>
+    <span class="ticker-item">Pump Maintenance</span>
+    <span class="ticker-item">Technical Support</span>
+    <span class="ticker-item">Spare Parts Supply</span>
+    <span class="ticker-item">Ruhrpumpen Pumps</span>
+    <span class="ticker-item">Industrial Process Pumps</span>
+    <span class="ticker-item">Chemical Pumps</span>
+    <span class="ticker-item">Gear Pumps</span>
+    <span class="ticker-item">Oil & Gas Pumps</span>
+    <span class="ticker-item">Pump Maintenance</span>
+    <span class="ticker-item">Technical Support</span>
+    <span class="ticker-item">Spare Parts Supply</span>
+  </div>
+</div>
+
+<!-- CARD FAN WPC -->
+<div class="fan-section ">
+  <div class="fan-sticky">
+    <div class="fan-bg-grid"></div>
+    <div class="fan-heading">
+      <div class="fan-eyebrow">Product Lines</div>
+      <h2 class="fan-title">Pumps built for <span>every industry</span></h2>
+    </div>
+    <div class="fan-stage">
+      <div class="fan-card" onclick="openPrincipalGallery('horizontal-pumps',1,'Horizontal Split Case Pumps','wpc-products')">
+        <img src="./images/wpc-products/horizontal-pumps-1.jpg" alt="Water &amp; Waste Pumps" loading="lazy">
+        <span class="fan-label">Water &amp; Waste Pumps</span>
+      </div>
+      <div class="fan-card" onclick="openPrincipalGallery('chemical-pumps',2,'Chemical Pumps','wpc-products')">
+        <img src="./images/wpc-products/chemical-pumps-1.jpg" alt="Chemical Pumps" loading="lazy">
+        <span class="fan-label">Chemical Pumps</span>
+      </div>
+      <div class="fan-card" onclick="openPrincipalGallery('fire-pumps',3,'RuhrSafe Fire Pumps &amp; Systems','wpc-products')">
+        <img src="./images/wpc-products/fire-pumps-1.jpg" alt="Fire Pumps &amp; Systems" loading="lazy">
+        <span class="fan-label">Fire Pumps &amp; Systems</span>
+      </div>
+      <div class="fan-card" onclick="openPrincipalGallery('industrial-pumps',2,'Industrial Pumps','wpc-products')">
+        <img src="./images/wpc-products/industrial-pumps-1.jpg" alt="Industrial Pumps" loading="lazy">
+        <span class="fan-label">Industrial Pumps</span>
+      </div>
+      <div class="fan-card" onclick="openPrincipalGallery('seals',3,'Mechanical Seals','wpc-products')">
+        <img src="./images/wpc-products/seals-1.jpg" alt="Mechanical Seals" loading="lazy">
+        <span class="fan-label">Mechanical Seals</span>
+      </div>
+    </div>
+    <div class="fan-hint">Click or tap a card to explore</div>
+  </div>
+</div>
+
+<!-- STATEMENT WPC -->
+<div class="statement-section">
+  <div class="statement-inner">
+    <div class="statement-eyebrow">Who We Are</div>
+    <p class="statement-text" data-statement>We are a 100% Filipino-owned company and the <em>Ruhrpumpen pump partner</em> in the Philippines, supplying <em>pumps, spare parts and technical support</em> to Philippine industry.</p>
+  </div>
+</div>
+
+<!-- ABOUT WPC -->
+<section class="section" id="about" style="background: var(--off-white);">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual fade-in-left">
+        <div class="about-main-card">
+          <div class="about-wpc-logo">Worthrand Petropower Corporation</div>
+          <div class="about-est">A trusted name in industrial pump solutions since its establishment. Proudly 100% Filipino-owned, SEC-registered, and compliant with all government approving agencies. Serving the oil, gas, chemical, marine, and power industries across the Philippines.</div>
+        </div>
+        <div class="about-float-badge">
+          <div class="float-icon">🏆</div>
+          <div class="float-info"><div class="fi-num">Partner</div><div class="fi-label">Ruhrpumpen in PH</div></div>
+        </div>
+      </div>
+      <div class="about-text fade-in-right">
+        <div class="section-eyebrow">About the Company</div>
+        <h2 class="section-title">Powering Philippine Industries with World-Class Pumps</h2>
+        <p class="section-desc">Worthrand Petropower Corporation (WPC) was incorporated by a group of young Filipino entrepreneurs who have solid vision and optimism. WPC was founded on <strong>March 1, 1999</strong>, registered with the SEC on <strong>April 28, 1999</strong>, and started official operations on <strong>May 5, 1999</strong>.</p>
+        <div class="about-highlights">
+          <div class="highlight-item">100% Filipino Corporation</div>
+          <div class="highlight-item">SEC Registered since 1999</div>
+          <div class="highlight-item">Ruhrpumpen Pump Partner</div>
+          <div class="highlight-item">Oil & Gas Specialists</div>
+          <div class="highlight-item">Marine Supply Ready</div>
+          <div class="highlight-item">Technical After-Sales Support</div>
+        </div>
+        <a href="#contact" class="btn-primary">Talk to Our Team ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS WPC -->
+<section class="section" style="background: var(--navy-dark); padding: 60px 40px;">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="color: hsla(0,0%,100%,0.5);">Industries We Serve</div>
+    <h2 class="section-title" style="color: white; margin-bottom: 36px;">Our Target Markets</h2>
+    <div class="markets-grid">
+      <div class="market-item"><span class="market-icon">🛢️</span>Oil &amp; Gas</div>
+      <div class="market-item"><span class="market-icon">⚡</span>Power Utilities</div>
+      <div class="market-item"><span class="market-icon">🌋</span>Geothermal</div>
+      <div class="market-item"><span class="market-icon">🧪</span>Petrochemicals</div>
+      <div class="market-item"><span class="market-icon">🏗️</span>EPC Contractors</div>
+      <div class="market-item"><span class="market-icon">⚗️</span>Chemicals</div>
+      <div class="market-item"><span class="market-icon">🍬</span>Sugar</div>
+      <div class="market-item"><span class="market-icon">⛏️</span>Mining</div>
+      <div class="market-item"><span class="market-icon">🏭</span>Cement</div>
+      <div class="market-item"><span class="market-icon">🍽️</span>Food &amp; Beverages</div>
+    </div>
+  </div>
+</section>
+
+<!-- VMO WPC -->
+<section class="section" style="background: white;">
+  <div class="section-inner">
+    <div class="vmo-grid">
+      <div class="vmo-card vmo-vision">
+        <div class="vmo-icon">🎯</div>
+        <div class="vmo-label">Our Vision</div>
+        <h3 class="vmo-title">Becoming the Most Successful Trading &amp; Engineering Firm in the Philippines</h3>
+        <p class="vmo-text">WPC aims to become one of the most successful trading and engineering firms in the Philippines, based on the merits of professionalism and business ethics — inspired by Tom Watson Sr.: <em>"If you want to be the greatest company, you have to start acting like one today."</em></p>
+      </div>
+      <div class="vmo-card vmo-mission">
+        <div class="vmo-icon">📋</div>
+        <div class="vmo-label">Our Mission</div>
+        <h3 class="vmo-title">Dedicated Ruhrpumpen Partner Across the Philippines</h3>
+        <p class="vmo-text">To be known to all corners of the Philippines as a dedicated Ruhrpumpen agent and distributor, supplying only the best quality equipment and spare parts — with quick-response service by highly skilled personnel.</p>
+      </div>
+      <div class="vmo-card vmo-objective">
+        <div class="vmo-icon">🚀</div>
+        <div class="vmo-label">Our Objective</div>
+        <h3 class="vmo-title">Economic, Professional &amp; Social Growth for All</h3>
+        <p class="vmo-text">To realize economic, professional, and social gains for our employees, stockholders, and principal Ruhrpumpen — while making available Science and Technology to enhance client productivity and contributing to our country's economic growth.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES WPC -->
+<section class="section" style="background: var(--off-white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">What We Stand For</div>
+      <h2 class="section-title">Organizational Values</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-in"><div class="value-icon">🤝</div><div class="value-name">Customer Value</div><p class="value-desc">We earn our customers' trust and business by providing products and services of the highest value and an absolute customer-oriented philosophy.</p></div>
+      <div class="value-card fade-in"><div class="value-icon">👥</div><div class="value-name">Employee Value</div><p class="value-desc">We employ professional, dynamic, and dedicated people — recognizing them as our most valuable resource with opportunities for growth based on performance and loyalty.</p></div>
+      <div class="value-card fade-in"><div class="value-icon">🔗</div><div class="value-name">Supplier Value</div><p class="value-desc">We maintain mutually harmonious relationships with our principals and suppliers who provide products through excellent quality, superior technology, and reliable performance.</p></div>
+      <div class="value-card fade-in"><div class="value-icon">🌍</div><div class="value-name">Community Value</div><p class="value-desc">We are an asset to our community. We put social responsibility and concern for environmental preservation at the forefront of our priorities.</p></div>
+      <div class="value-card fade-in"><div class="value-icon">📈</div><div class="value-name">Shareholder Value</div><p class="value-desc">We are trustees of our stockholders' assets. We earn their confidence by consistently providing superior returns and maximizing the value of their investments.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MANUFACTURERS WPC -->
+<section class="section" id="services" style="background: white;">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">What We Carry</div>
+      <h2 class="section-title">Our Principals &amp; Products</h2>
+      <p class="section-desc">Ruhrpumpen pump lines and systems for the Philippine market.</p>
+    </div>
+    <div class="principals-grid">
+      <div class="principal-card fade-in">
+        <div class="principal-name">Overhung Pumps</div>
+        <ul class="principal-products"><li>Process and general service pumps</li></ul>
+      </div>
+      <div class="principal-card fade-in">
+        <div class="principal-name">Vertical Pumps</div>
+        <ul class="principal-products"><li>Vertical pump designs</li></ul>
+      </div>
+      <div class="principal-card fade-in">
+        <div class="principal-name">Magnetic Driven Pumps</div>
+        <ul class="principal-products"><li>Sealless pump designs</li></ul>
+      </div>
+      <div class="principal-card fade-in">
+        <div class="principal-name">Between Bearing Pumps</div>
+        <ul class="principal-products"><li>Between-bearing pump designs</li></ul>
+      </div>
+      <div class="principal-card fade-in">
+        <div class="principal-name">Fire Pumps &amp; Systems</div>
+        <ul class="principal-products"><li>Fire protection pump systems</li></ul>
+      </div>
+      <div class="principal-card fade-in">
+        <div class="principal-name">Reciprocating Plunger Pumps</div>
+        <ul class="principal-products"><li>High-pressure plunger pumps</li></ul>
+      </div>
+      <div class="principal-card fade-in">
+        <div class="principal-name">Decoking Systems</div>
+        <ul class="principal-products"><li>Refinery decoking systems</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- STORY WPC -->
+<div class="story" data-steps='[[0.5, 0.5, 1.0, 0], [0.5, 0.52, 1.9, 0], [0.66, 0.2, 1.9, 0], [0.62, 0.64, 1.8, 0], [0.5, 0.5, 1.0, 0]]' data-dwell="3.4" data-trans="1.1">
+  <div class="story-inner">
+    <div class="story-head">
+      <div class="story-eyebrow">Product Spotlight</div>
+      <h2 class="story-title">Anatomy of a process pump</h2>
+    </div>
+    <div class="story-frame">
+      <div class="story-hud">Fig. 01 &middot; CRP process pump (illustrative)</div>
+      <div class="story-cam">
+<svg class="story-svg" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+  <line class="st-dash" x1="50" y1="260" x2="750" y2="260"/>
+  <line class="st-dash" x1="400" y1="30" x2="400" y2="480"/>
+  <path class="sl" style="--d:.0s" pathLength="1" d="M215 438 H585 V462 H215 Z"/>
+  <path class="sl" style="--d:.1s" pathLength="1" d="M326 390 L286 438 M474 390 L514 438"/>
+  <path class="sl" style="--d:.2s" pathLength="1" d="M462 134 V66 M522 191 V66"/>
+  <path class="sl" style="--d:.3s" pathLength="1" d="M446 50 H538 V66 H446 Z"/>
+  <path class="st-flow" d="M400 386 A126 126 0 0 0 526 260 A126 126 0 0 0 500 183 L492 62"/>
+  <circle class="st-bolt" cx="458" cy="58" r="3"/><circle class="st-bolt" cx="526" cy="58" r="3"/>
+  <circle class="sl" style="--d:.2s" pathLength="1" cx="400" cy="260" r="140"/>
+  <circle class="sl" style="--d:.4s" pathLength="1" cx="400" cy="260" r="112"/>
+  <circle class="sl" style="--d:.6s" pathLength="1" cx="400" cy="260" r="72"/>
+  <g class="sl-g" style="--d:.8s">
+    <path class="sl" pathLength="1" d="M420 260 C438 262 448 276 454 298"/>
+    <path class="sl" pathLength="1" d="M420 260 C438 262 448 276 454 298" transform="rotate(60 400 260)"/>
+    <path class="sl" pathLength="1" d="M420 260 C438 262 448 276 454 298" transform="rotate(120 400 260)"/>
+    <path class="sl" pathLength="1" d="M420 260 C438 262 448 276 454 298" transform="rotate(180 400 260)"/>
+    <path class="sl" pathLength="1" d="M420 260 C438 262 448 276 454 298" transform="rotate(240 400 260)"/>
+    <path class="sl" pathLength="1" d="M420 260 C438 262 448 276 454 298" transform="rotate(300 400 260)"/>
+  </g>
+  <circle class="sl" style="--d:1s" pathLength="1" cx="400" cy="260" r="20"/>
+  <circle class="sl" style="--d:1.1s" pathLength="1" cx="400" cy="260" r="8"/>
+  <circle class="st-dash" cx="400" cy="260" r="46" fill="none"/>
+  <g class="hl hl-1"><circle cx="400" cy="260" r="86"/><path d="M352 318 L328 352"/><text x="324" y="368" text-anchor="end">IMPELLER</text></g>
+  <g class="hl hl-2"><rect x="436" y="40" width="112" height="162" rx="14"/><path d="M548 100 L566 100"/><text x="572" y="104">DISCHARGE NOZZLE</text></g>
+  <g class="hl hl-3"><circle cx="400" cy="260" r="152"/><path d="M499 359 L522 384"/><text x="528" y="390">VOLUTE CASING</text></g>
+  <g class="hl hl-4"><ellipse cx="400" cy="256" rx="372" ry="232"/></g>
+</svg>
+      </div>
+    </div>
+    <div class="story-caps">
+      <div class="story-cap"><div class="cap-kicker">Ruhrpumpen &middot; CRP</div><div class="cap-big">Chemical process pump</div><div class="cap-small">ASME / ISO 2858 / 5199 end-suction centrifugal pump (OH1). Single stage, radially split, overhung.</div></div>
+      <div class="story-cap"><div class="cap-kicker">Capacity</div><div class="cap-big">Up to 500 m&sup3;/h</div><div class="cap-small">Flow capacity of the CRP chemical process pump.</div></div>
+      <div class="story-cap"><div class="cap-kicker">Head</div><div class="cap-big">Up to 215 m</div><div class="cap-small">Total head, with high-end shaft rigidity and low seal face deflection.</div></div>
+      <div class="story-cap"><div class="cap-kicker">Pressure</div><div class="cap-big">Up to 25 bar</div><div class="cap-small">Single and dual component and cartridge seal and system options.</div></div>
+      <div class="story-cap"><div class="cap-kicker">Temperature</div><div class="cap-big">&minus;60 to 300 &deg;C</div><div class="cap-small">Operating range, backed locally by genuine spare parts and technical after-sales support.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US WPC -->
+<section class="section" id="why" style="background: var(--navy-dark);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow" style="color: hsla(0,0%,100%,0.5);">Why Choose Us</div>
+      <h2 class="section-title" style="color: white;">The Worthrand Advantage</h2>
+      <p class="section-desc" style="color: hsla(0,0%,100%,0.7);">As a Ruhrpumpen partner, we give our clients direct access to world-class industrial pump technology.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-in"><div class="why-num">44+</div><div class="why-label">Global Suppliers &amp; Partners</div></div>
+      <div class="why-card fade-in"><div class="why-num">751+</div><div class="why-label">Successful Import Shipments</div></div>
+      <div class="why-card fade-in"><div class="why-num">7</div><div class="why-label">Ruhrpumpen Product Lines</div></div>
+      <div class="why-card fade-in"><div class="why-num">100%</div><div class="why-label">Filipino-Owned &amp; SEC Registered</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS WPC -->
+<section class="section" id="news" style="background: var(--off-white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Latest Updates</div>
+      <h2 class="section-title">News &amp; Announcements</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card fade-in">
+        <div class="news-img">⚙️<span class="news-tag">Company News</span></div>
+        <div class="news-body"><div class="news-date">June 2026</div><div class="news-title">Worthrand Expands Marine Supply Operations to Port of Clark</div><p class="news-excerpt">We are now fully operational in supplying certified marine pump equipment and spare parts at Port of Clark.</p></div>
+      </div>
+      <div class="news-card fade-in">
+        <div class="news-img" style="background:#0F0F4A;">🛢️<span class="news-tag">Industry</span></div>
+        <div class="news-body"><div class="news-date">May 2026</div><div class="news-title">Ruhrpumpen Pump Lineup Available for the Philippine Market</div><p class="news-excerpt">Worthrand now supplies Ruhrpumpen pumps and systems, from overhung and vertical pumps to fire systems.</p></div>
+      </div>
+      <div class="news-card fade-in">
+        <div class="news-img" style="background:#3A0000;">🔧<span class="news-tag">After-Sales</span></div>
+        <div class="news-body"><div class="news-date">April 2026</div><div class="news-title">Enhanced Technical Support Program Launched for Existing Clients</div><p class="news-excerpt">Worthrand launches an enhanced after-sales technical support program offering faster response times and on-site assistance.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT WPC -->
+<section class="section" id="contact" style="background: white;">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Get In Touch</div>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-desc">Have a project requirement or need a quotation? Our team is ready to assist you.</p>
+    </div>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3862.842905529066!2d120.98602427510397!3d14.493706085980023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ce828e6a1f07%3A0xd1e992d3ea7f0f9!2sWorthrand%20Petropower%20Corporation!5e0!3m2!1sen!2sph!4v1782974164955!5m2!1sen!2sph" width="100%" height="350" style="border:0;border-radius:16px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-info-title">We'd love to hear from you</div>
+        <p class="contact-info-sub">Whether you need industrial pump equipment, spare parts, or technical consultation — reach out and we'll get back to you promptly.</p>
+        <div class="contact-detail"><div class="cd-icon">📍</div><div class="cd-info"><div class="cd-label">Office Address</div><div class="cd-value">Room 403, 4th Floor Doña Eusebia Rodriguez Bldg.,<br>0611 Quirino Ave., San Dionisio,<br>Parañaque City, 1700 Metro Manila</div></div></div>
+        <div class="contact-detail"><div class="cd-icon">📞</div><div class="cd-info"><div class="cd-label">Phone / Mobile</div><div class="cd-value">0917 891 3124<br>(632) 8 825-3928 / 8 241-3689</div></div></div>
+        <div class="contact-detail"><div class="cd-icon">📠</div><div class="cd-info"><div class="cd-label">Fax</div><div class="cd-value">(632) 8 825-2155</div></div></div>
+      </div>
+      <div class="contact-form">
+        <div class="form-title">Send us a Message — WPC</div>
+        <form id="wpcContactForm">
+          <div class="form-row">
+            <div class="form-field"><label>First Name</label><input type="text" name="first_name" placeholder="Juan" required></div>
+            <div class="form-field"><label>Last Name</label><input type="text" name="last_name" placeholder="Dela Cruz" required></div>
+          </div>
+          <div class="form-field"><label>Email Address</label><input type="email" name="email" placeholder="you@company.com" required></div>
+          <div class="form-field"><label>Phone Number</label><input type="tel" name="phone" placeholder="0917 000 0000"></div>
+          <div class="form-field">
+            <label>Subject / Product Inquiry</label>
+            <select name="subject" required>
+              <option value="">Select a topic...</option>
+              <option>Industrial Process Pumps</option>
+              <option>Oil & Gas Pumps</option>
+              <option>Chemical Pumps</option>
+              <option>Gear Pumps</option>
+              <option>Marine Pump Supply</option>
+              <option>Spare Parts & After-Sales</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Message</label><textarea name="message" placeholder="Tell us about your requirement or project..." required></textarea></div>
+          <input type="hidden" name="company" value="WPC - Worthrand Petropower Corporation">
+          <button type="submit" class="form-submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER WPC -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand-name">WORTHRAND</div>
+        <div class="brand-sub">Petropower Corporation</div>
+        <p>Supplier of Ruhrpumpen pumps in the Philippines. 100% Filipino-owned corporation serving the oil, gas, chemical, marine, and power industries.</p>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#news">News</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Products</h4><ul><li><a href="#services">Process Pumps</a></li><li><a href="#services">Oil & Gas Pumps</a></li><li><a href="#services">Chemical Pumps</a></li><li><a href="#services">Gear Pumps</a></li><li><a href="#services">Marine Supply</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">0917 891 3124</a></li><li><a href="#">(632) 8 825-3928</a></li><li><a href="#">(632) 8 241-3689</a></li><li><a href="#">Parañaque City, Metro Manila</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span class="footer-red">Worthrand Petropower Corporation</span>. All rights reserved.</p>
+      <p>SEC Registered · 100% Filipino-Owned · Ruhrpumpen Partner Philippines</p>
+      <a href="./admin.html" style="font-size:11px;color:hsla(0,0%,100%,0.2);margin-top:8px;display:block;">Admin</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- end WPC -->
+
+<!-- ==================== WTC SECTION ==================== -->
+<div class="company-section" id="section-wtc">
+
+<!-- HERO WTC -->
+<section class="hero" id="home-wtc">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-grid-glow"></div>
+<div class="hero-blueprint-wrap">
+  <svg class="hero-blueprint" viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg">
+    <path class="bp-line bp-d1" pathLength="1" d="M10,30 L10,10 L30,10" />
+    <path class="bp-line bp-d1" pathLength="1" d="M430,10 L450,10 L450,30" />
+    <path class="bp-line bp-d1" pathLength="1" d="M450,350 L450,370 L430,370" />
+    <path class="bp-line bp-d1" pathLength="1" d="M30,370 L10,370 L10,350" />
+    <line class="bp-dash" x1="20" y1="190" x2="440" y2="190" />
+    <line class="bp-dash" x1="230" y1="20" x2="230" y2="360" />
+    <circle class="bp-line bp-d2" pathLength="1" cx="230" cy="190" r="95" />
+    <circle class="bp-line bp-d3" pathLength="1" cx="230" cy="190" r="48" />
+    <line class="bp-line bp-d4" pathLength="1" x1="230" y1="142" x2="230" y2="238" />
+    <line class="bp-line bp-d4" pathLength="1" x1="182" y1="190" x2="278" y2="190" />
+    <line class="bp-line bp-d4" pathLength="1" x1="196" y1="156" x2="264" y2="224" />
+    <line class="bp-line bp-d4" pathLength="1" x1="264" y1="156" x2="196" y2="224" />
+    <circle class="bp-dot bp-fade1" cx="230" cy="190" r="4" />
+    <line class="bp-line bp-d5" pathLength="1" x1="20" y1="175" x2="150" y2="175" />
+    <line class="bp-line bp-d5" pathLength="1" x1="20" y1="205" x2="150" y2="205" />
+    <line class="bp-line bp-d5" pathLength="1" x1="20" y1="175" x2="20" y2="205" />
+    <line class="bp-line bp-d5" pathLength="1" x1="215" y1="95" x2="215" y2="25" />
+    <line class="bp-line bp-d5" pathLength="1" x1="245" y1="95" x2="245" y2="25" />
+    <line class="bp-line bp-d5" pathLength="1" x1="215" y1="25" x2="245" y2="25" />
+    <path class="bp-line bp-d6" pathLength="1" d="M290,120 A100,100 0 0 1 320,190" />
+    <path class="bp-line bp-d6" pathLength="1" d="M312,178 L320,190 L306,194" />
+    <line class="bp-line bp-d6" pathLength="1" x1="135" y1="330" x2="325" y2="330" />
+    <line class="bp-line bp-d6" pathLength="1" x1="135" y1="322" x2="135" y2="338" />
+    <line class="bp-line bp-d6" pathLength="1" x1="325" y1="322" x2="325" y2="338" />
+    <text class="bp-label bp-fade2" x="195" y="352">&#216;190mm</text>
+    <text class="bp-label bp-fade3" x="30" y="165">INLET</text>
+    <text class="bp-label bp-fade3" x="252" y="18">OUTLET</text>
+  </svg>
+  <div class="hero-blueprint-sweep"></div>
+</div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Authorized Representative — Multiple Principals</div>
+      <h1 class="hero-title">Industrial <span class="accent">Equipment</span> &amp; Engineering Solutions</h1>
+      <p class="hero-desc">Worthwater Technology Corporation is a 100% Filipino-owned company established in 1996 — supplying world-class industrial equipment and engineering services across the Philippines.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Our Products ›</a>
+        <a href="#contact" class="btn-outline">Get a Quote</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-card-title">Company Overview</div>
+        <div class="hero-stat-row">
+          <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Filipino Owned</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">1996</div><div class="hero-stat-label">Established</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">12+</div><div class="hero-stat-label">Global Principals</div></div>
+          <div class="hero-stat"><div class="hero-stat-num">PH</div><div class="hero-stat-label">Nationwide Service</div></div>
+        </div>
+        <div class="hero-badge">
+          <div class="hero-badge-icon">🏭</div>
+          <div class="hero-badge-text">
+            <div class="b-title">Authorized Representative</div>
+            <div class="b-sub">SEC Registered · Parañaque City, PH</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER WTC -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item">Voith Turbo</span>
+    <span class="ticker-item">Milton Roy Metering Pumps</span>
+    <span class="ticker-item">Pleuger Submersible Pumps</span>
+    <span class="ticker-item">Thermax Chemicals</span>
+    <span class="ticker-item">Truwater Cooling Towers</span>
+    <span class="ticker-item">Fiberglass Pipes</span>
+    <span class="ticker-item">Industrial Valves</span>
+    <span class="ticker-item">Water Treatment Systems</span>
+    <span class="ticker-item">Voith Turbo</span>
+    <span class="ticker-item">Milton Roy Metering Pumps</span>
+    <span class="ticker-item">Pleuger Submersible Pumps</span>
+    <span class="ticker-item">Thermax Chemicals</span>
+    <span class="ticker-item">Truwater Cooling Towers</span>
+    <span class="ticker-item">Fiberglass Pipes</span>
+    <span class="ticker-item">Industrial Valves</span>
+    <span class="ticker-item">Water Treatment Systems</span>
+  </div>
+</div>
+
+<!-- TICKER WTC -->
+<div class="ticker ticker-wtc">
+  <div class="ticker-inner">
+    <span class="ticker-item">Hydrocarbon / Oil Refinery</span>
+    <span class="ticker-item">Power Utilities</span>
+    <span class="ticker-item">Geothermal</span>
+    <span class="ticker-item">Mining</span>
+    <span class="ticker-item">Sugar</span>
+    <span class="ticker-item">Chemicals</span>
+    <span class="ticker-item">EPC Contractors</span>
+    <span class="ticker-item">Cement</span>
+    <span class="ticker-item">Food &amp; Beverages</span>
+    <span class="ticker-item">Petrochemicals</span>
+    <span class="ticker-item">Steel</span>
+    <span class="ticker-item">Alcohol Distilleries</span>
+    <span class="ticker-item">Hydrocarbon / Oil Refinery</span>
+    <span class="ticker-item">Power Utilities</span>
+    <span class="ticker-item">Geothermal</span>
+    <span class="ticker-item">Mining</span>
+    <span class="ticker-item">Sugar</span>
+    <span class="ticker-item">Chemicals</span>
+    <span class="ticker-item">EPC Contractors</span>
+    <span class="ticker-item">Cement</span>
+    <span class="ticker-item">Food &amp; Beverages</span>
+    <span class="ticker-item">Petrochemicals</span>
+    <span class="ticker-item">Steel</span>
+    <span class="ticker-item">Alcohol Distilleries</span>
+  </div>
+</div>
+
+<!-- CARD FAN WTC -->
+<div class="fan-section fan-wtc">
+  <div class="fan-sticky">
+    <div class="fan-bg-grid"></div>
+    <div class="fan-heading">
+      <div class="fan-eyebrow">Our Principals</div>
+      <h2 class="fan-title">World-class brands, <span>one trusted partner</span></h2>
+    </div>
+    <div class="fan-stage">
+      <div class="fan-card" onclick="openPrincipalGallery('voith',1,'Voith Turbo')">
+        <img src="./images/principals/voith-1.jpg" alt="Voith Turbo" loading="lazy">
+        <span class="fan-label">Voith Turbo</span>
+      </div>
+      <div class="fan-card" onclick="openPrincipalGallery('milton-roy',1,'Milton Roy Company')">
+        <img src="./images/principals/milton-roy-1.jpg" alt="Milton Roy" loading="lazy">
+        <span class="fan-label">Milton Roy</span>
+      </div>
+      <div class="fan-card" onclick="openPrincipalGallery('pleuger',1,'Pleuger Industries')">
+        <img src="./images/principals/pleuger-1.jpg" alt="Pleuger" loading="lazy">
+        <span class="fan-label">Pleuger</span>
+      </div>
+      <div class="fan-card" onclick="openPrincipalGallery('kojo',1,'Kojo Valves')">
+        <img src="./images/principals/kojo-1.jpg" alt="Kojo Valves" loading="lazy">
+        <span class="fan-label">Kojo Valves</span>
+      </div>
+      <div class="fan-card" onclick="openPrincipalGallery('tokyo-boeki',1,'Tokyo Boeki / Niigata')">
+        <img src="./images/principals/tokyo-boeki-1.jpg" alt="Tokyo Boeki" loading="lazy">
+        <span class="fan-label">Tokyo Boeki</span>
+      </div>
+    </div>
+    <div class="fan-hint">Click or tap a card to explore</div>
+  </div>
+</div>
+
+<!-- STATEMENT WTC -->
+<div class="statement-section statement-wtc">
+  <div class="statement-inner">
+    <div class="statement-eyebrow">Our Vision</div>
+    <p class="statement-text" data-statement>Our vision is to become <em>one of the most successful trading and engineering firms</em> in the Philippines, built on <em>professionalism and business ethics</em>.</p>
+  </div>
+</div>
+
+<!-- ABOUT WTC -->
+<section class="section" id="about-wtc" style="background: var(--off-white);">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual fade-in-left">
+        <div class="about-main-card">
+          <div class="about-wpc-logo">Worthwater Technology Corporation</div>
+          <div class="about-est">A blue-blooded equipment seller and engineering service outfit established in 1996. Our main business is representation, as agent and/or distributor, of overseas manufacturers of high quality industrial equipment and products, complimented with local solid engineering services.</div>
+        </div>
+        <div class="about-float-badge">
+          <div class="float-icon">🌊</div>
+          <div class="float-info"><div class="fi-num">12+</div><div class="fi-label">Global Principals Represented</div></div>
+        </div>
+      </div>
+      <div class="about-text fade-in-right">
+        <div class="section-eyebrow">About the Company</div>
+        <h2 class="section-title">Engineering Solutions for Philippine Industries</h2>
+        <p class="section-desc">Worthwater Technology Corporation (WTC) was incorporated by a group of young Filipino entrepreneurs led by Mr. Roger Bermas. WTC was registered with the SEC on <strong>December 8, 1995</strong> and started official operations on <strong>January 2, 1996</strong>.</p>
+        <div class="about-highlights">
+          <div class="highlight-item">100% Filipino Corporation</div>
+          <div class="highlight-item">SEC Registered since 1995</div>
+          <div class="highlight-item">12+ Global Principals</div>
+          <div class="highlight-item">Engineering Services</div>
+          <div class="highlight-item">After-Market Support</div>
+          <div class="highlight-item">Technical Service Team</div>
+        </div>
+        <a href="#contact" class="btn-primary">Talk to Our Team ›</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETS WTC -->
+<section class="section" style="background: var(--navy-dark); padding: 60px 40px;">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="color: hsla(0,0%,100%,0.5);">Industries We Serve</div>
+    <h2 class="section-title" style="color: white; margin-bottom: 36px;">Our Target Markets</h2>
+    <div class="markets-grid">
+      <div class="market-item"><span class="market-icon">🛢️</span>Hydrocarbon/Oil Refinery</div>
+      <div class="market-item"><span class="market-icon">⚡</span>Power Utilities</div>
+      <div class="market-item"><span class="market-icon">🌋</span>Geothermal</div>
+      <div class="market-item"><span class="market-icon">⛏️</span>Mining</div>
+      <div class="market-item"><span class="market-icon">🍬</span>Sugar</div>
+      <div class="market-item"><span class="market-icon">⚗️</span>Chemicals</div>
+      <div class="market-item"><span class="market-icon">🏗️</span>EPC Contractors</div>
+      <div class="market-item"><span class="market-icon">🏭</span>Cement</div>
+      <div class="market-item"><span class="market-icon">🍽️</span>Food &amp; Beverages</div>
+      <div class="market-item"><span class="market-icon">🧪</span>Petrochemicals</div>
+      <div class="market-item"><span class="market-icon">⚙️</span>Steel</div>
+      <div class="market-item"><span class="market-icon">🍺</span>Alcohol Distilleries</div>
+    </div>
+  </div>
+</section>
+
+<!-- VMO WTC -->
+<section class="section" style="background: white;">
+  <div class="section-inner">
+    <div class="vmo-grid">
+      <div class="vmo-card vmo-vision">
+        <div class="vmo-icon">🎯</div>
+        <div class="vmo-label">Our Vision</div>
+        <h3 class="vmo-title">Becoming the Most Successful Trading &amp; Engineering Firm in the Philippines</h3>
+        <p class="vmo-text">WTC aims to become one of the most successful trading and engineering firms in the Philippines based on merits of professionalism and business ethics — inspired by Tom Watson Sr.: <em>"If you want to be the greatest company, you have to start acting like one today."</em></p>
+      </div>
+      <div class="vmo-card vmo-mission">
+        <div class="vmo-icon">📋</div>
+        <div class="vmo-label">Our Mission</div>
+        <h3 class="vmo-title">Equipment Manufacturers' Partner Across the Philippines</h3>
+        <p class="vmo-text">To be known to all corners of the Philippines as the equipment manufacturers' partner who supplies only the best quality, effectively economical, and viably available pieces of equipment and materials — with quick-response engineering service by highly skilled personnel.</p>
+      </div>
+      <div class="vmo-card vmo-objective">
+        <div class="vmo-icon">🚀</div>
+        <div class="vmo-label">Our Objective</div>
+        <h3 class="vmo-title">Economic, Professional &amp; Social Growth for All</h3>
+        <p class="vmo-text">To realize economic, professional, and social gains for our employees and stockholders. To make available to our clients the chemistry of Science and Technology, for the enhancement of their productivity and efficiency, by supplying equipment of latest technological innovations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES WTC -->
+<section class="section" style="background: var(--off-white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">What We Stand For</div>
+      <h2 class="section-title">Organizational Values</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-in"><div class="value-icon">🤝</div><div class="value-name">Customer Value</div><p class="value-desc">We earn our customer's trust, friendship, and business by providing products and services of the highest value and absolute customer-oriented philosophy.</p></div>
+      <div class="value-card fade-in"><div class="value-icon">👥</div><div class="value-name">Employee Value</div><p class="value-desc">We employ professional, dynamic, and dedicated people — recognizing them as our most valuable resource with climate for rewards and growth based on performance and loyalty.</p></div>
+      <div class="value-card fade-in"><div class="value-icon">🔗</div><div class="value-name">Supplier Value</div><p class="value-desc">We maintain mutually harmonious, beneficial relationships with our principals and suppliers who provide products through excellent quality, superior technology, and reliable performance.</p></div>
+      <div class="value-card fade-in"><div class="value-icon">🌍</div><div class="value-name">Community Value</div><p class="value-desc">We are an asset to each community which we belong. We put our social responsibility to each member of these communities and concern for environment preservation at the forefront.</p></div>
+      <div class="value-card fade-in"><div class="value-icon">📈</div><div class="value-name">Shareholder Value</div><p class="value-desc">We are the trustees of our stockholder's assets. We earn their confidence by consistently providing superior return and maximizing value of these assets.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPALS WTC -->
+<section class="section" id="services-wtc" style="background: white;">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">What We Carry</div>
+      <h2 class="section-title">Our Principals &amp; Products</h2>
+      <p class="section-desc">We are the authorized representative of world-class manufacturers, supplying high-quality industrial equipment and materials across the Philippines.</p>
+    </div>
+    <div class="principals-grid">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('voith',1,'Voith Turbo')" style="cursor:pointer;">
+        <div class="principal-country">🇩🇪 Germany</div>
+        <div class="principal-name">Voith Turbo</div>
+        <ul class="principal-products"><li>Variable Speed Couplings</li><li>Geared Variable Speed Drives</li><li>Hydrodynamic Couplings</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('milton-roy',1,'Milton Roy Company')" style="cursor:pointer;">
+        <div class="principal-country">🇺🇸 U.S.A.</div>
+        <div class="principal-name">Milton Roy Company</div>
+        <ul class="principal-products"><li>Metering Pumps &amp; Accessories</li><li>Vertical Motor Driven Mixer</li><li>pH Controllers</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('nov',1,'NOV Fiber Glass System')" style="cursor:pointer;">
+        <div class="principal-country">🇸🇬 Singapore</div>
+        <div class="principal-name">NOV Fiber Glass System</div>
+        <ul class="principal-products"><li>Fiberglass Pipes &amp; Fittings</li><li>GRP Piping Systems</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('pleuger',1,'Pleuger Industries')" style="cursor:pointer;">
+        <div class="principal-country">🇩🇪 Germany</div>
+        <div class="principal-name">Pleuger Industries</div>
+        <ul class="principal-products"><li>Submersible Pumps</li><li>Booster Pumps</li><li>Flood/Cool Water Pumps</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('kojo',1,'Kojo Valves')" style="cursor:pointer;">
+        <div class="principal-country">🇨🇳 China</div>
+        <div class="principal-name">Kojo Valves</div>
+        <ul class="principal-products"><li>Industrial Steel Valves</li><li>Gate, Globe &amp; Check Valves</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('igawara',3,'Igawara Industrial Services')" style="cursor:pointer;">
+        <div class="principal-country">🇸🇬 Singapore</div>
+        <div class="principal-name">Igawara Industrial Services</div>
+        <ul class="principal-products"><li>Flanges &amp; Butt Weld Fittings</li><li>Heat Exchangers</li><li>Industrial Machine Tools</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('tokyo-boeki',1,'Tokyo Boeki / Niigata')" style="cursor:pointer;">
+        <div class="principal-country">🇯🇵 Japan</div>
+        <div class="principal-name">Tokyo Boeki / Niigata</div>
+        <ul class="principal-products"><li>Marine/Truck Loading Arms</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('muhr',4,'Muhr')" style="cursor:pointer;">
+        <div class="principal-country">🇩🇪 Germany</div>
+        <div class="principal-name">Muhr</div>
+        <ul class="principal-products"><li>Hydro Power Systems</li><li>Debris Handling</li><li>Bulk Loading Systems</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('thermax',5,'Thermax Chemicals')" style="cursor:pointer;">
+        <div class="principal-country">🇮🇳 India</div>
+        <div class="principal-name">Thermax Chemicals</div>
+        <ul class="principal-products"><li>Boiler Water Treatment Chemicals</li><li>Cooling Water Treatment</li><li>Reverse Osmosis Chemicals</li><li>Sugar Process Chemicals</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('sunrui',3,'Sunrui Electrochlorination')" style="cursor:pointer;">
+        <div class="principal-country">🇨🇳 China</div>
+        <div class="principal-name">Sunrui Electrochlorination</div>
+        <ul class="principal-products"><li>Water Treatment Systems</li><li>Marine Environmental Protection</li><li>Corrosion Control Products</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('piller',2,'Piller Fan &amp; Blower')" style="cursor:pointer;">
+        <div class="principal-country">🇨🇳 China</div>
+        <div class="principal-name">Piller Fan &amp; Blower</div>
+        <ul class="principal-products"><li>Mechanical Vapor Recompression</li><li>Air &amp; Gas Handling</li><li>Atomizing Air Compressor</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('truwater',3,'Truwater Cooling Tower')" style="cursor:pointer;">
+        <div class="principal-country">🇺🇸/🇲🇾 USA/Malaysia</div>
+        <div class="principal-name">Truwater Cooling Tower</div>
+        <ul class="principal-products"><li>Packaged Cooling Towers</li><li>Field Erected Cooling Towers</li><li>Wet &amp; Dry Slag Handling</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('sizhou',3,'Sizhou Ash Handling')" style="cursor:pointer;">
+        <div class="principal-country">🇨🇳 China</div>
+        <div class="principal-name">Sizhou Ash Handling</div>
+        <ul class="principal-products"><li>Wet &amp; Dry Slag Handling System</li><li>Pneumatic Ash-Handling System</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('qingdao-yinghai',4,'Qingdao Yinghai (QDYH) Anodes')" style="cursor:pointer;">
+        <div class="principal-country">🇨🇳 China</div>
+        <div class="principal-name">Qingdao Yinghai (QDYH) Anodes</div>
+        <ul class="principal-products"><li>Auxiliary Anodes &amp; Reference Electrodes</li><li>Cathodic Protection Panel &amp; Accessories</li><li>Galvanic Anodes</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('kolink',3,'Kolink Valves &amp; Pipe Fittings')" style="cursor:pointer;">
+        <div class="principal-country">🇨🇳 China</div>
+        <div class="principal-name">Kolink Valves &amp; Pipe Fittings</div>
+        <ul class="principal-products"><li>Gate, Ball, Butterfly &amp; Check Valves</li><li>Globe &amp; Plug Valves</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('brevini',2,'Brevini Gearboxes')" style="cursor:pointer;">
+        <div class="principal-country">🇮🇹 Italy</div>
+        <div class="principal-name">Brevini Gearboxes</div>
+        <ul class="principal-products"><li>Industrial Planetary Gearboxes</li><li>Helical &amp; Bevel Helical Gearboxes</li></ul>
+      </div>
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('stransky',2,'Stransky A Petrzik')" style="cursor:pointer;">
+        <div class="principal-country">🇨🇿 Czech Republic</div>
+        <div class="principal-name">Stransky A Petrzik</div>
+        <ul class="principal-products"><li>Pneumatic Cylinders</li><li>Valves &amp; Accessories</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPAL GALLERY MODAL -->
+
+<!-- STORY WTC -->
+<div class="story story-wtc" data-steps='[[0.5, 0.5, 1.0, 0], [0.34, 0.35, 1.6, 0], [0.6, 0.45, 1.6, 0], [0.5, 0.55, 1.3, 0], [0.5, 0.5, 1.06, 1]]' data-dwell="3.4" data-trans="1.1">
+  <div class="story-inner">
+    <div class="story-head">
+      <div class="story-eyebrow">Principal Spotlight</div>
+      <h2 class="story-title">Voith Vorecon, by the numbers</h2>
+    </div>
+    <div class="story-frame">
+      <div class="story-hud">Voith Vorecon</div>
+      <div class="story-cam">
+        <img src="./images/story/vorecon-1.jpg" alt="Voith Vorecon variable speed planetary gear" decoding="async">
+        <img src="./images/story/vorecon-2.jpg" alt="Voith Vorecon with electric motor on a base frame" decoding="async">
+      </div>
+    </div>
+    <div class="story-caps">
+      <div class="story-cap"><div class="cap-kicker">Voith Turbo &middot; Vorecon</div><div class="cap-big">Reliable speed control</div><div class="cap-small">Geared variable speed couplings, represented in the Philippines by Worthwater Technology.</div></div>
+      <div class="story-cap"><div class="cap-kicker">Reliability</div><div class="cap-big">99.97%</div><div class="cap-small">Reliability of Voith geared variable speed couplings.</div></div>
+      <div class="story-cap"><div class="cap-kicker">Power</div><div class="cap-big">Up to 30 MW</div><div class="cap-small">Range of application for variable speed drives using a Voith geared coupling.</div></div>
+      <div class="story-cap"><div class="cap-kicker">Speed</div><div class="cap-big">20,000 rpm</div><div class="cap-small">Output speeds up to 20,000 rpm. A standard motor and the coupling suit thermal power plants and oil and gas.</div></div>
+      <div class="story-cap"><div class="cap-kicker">Plug &amp; Play</div><div class="cap-big">One base frame</div><div class="cap-small">Vorecon and electric motor mounted together and supplied from a single source.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US WTC -->
+<section class="section" id="why-wtc" style="background: var(--navy-dark);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow" style="color: hsla(0,0%,100%,0.5);">Why Choose Us</div>
+      <h2 class="section-title" style="color: white;">The Worthwater Advantage</h2>
+      <p class="section-desc" style="color: hsla(0,0%,100%,0.7);">We are the authorized representative of multiple world-class manufacturers, giving our clients access to premium industrial equipment with local engineering support.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-in"><div class="why-num">12+</div><div class="why-label">Global Principals Represented</div></div>
+      <div class="why-card fade-in"><div class="why-num">1996</div><div class="why-label">Years of Industry Experience</div></div>
+      <div class="why-card fade-in"><div class="why-num">100%</div><div class="why-label">Filipino-Owned &amp; SEC Registered</div></div>
+      <div class="why-card fade-in"><div class="why-num">12+</div><div class="why-label">Industries Served Nationwide</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS WTC -->
+<section class="section" id="news-wtc" style="background: var(--off-white);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Latest Updates</div>
+      <h2 class="section-title">News &amp; Announcements</h2>
+    </div>
+    <div class="news-grid">
+      <div class="news-card fade-in">
+        <div class="news-img" style="background:#0F0F4A;">🌊<span class="news-tag">Company News</span></div>
+        <div class="news-body"><div class="news-date">July 2026</div><div class="news-title">Worthwater Expands Water Treatment Solutions Portfolio</div><p class="news-excerpt">WTC now offers expanded water treatment and electrochlorination solutions through our partnership with Sunrui Electrochlorination.</p></div>
+      </div>
+      <div class="news-card fade-in">
+        <div class="news-img" style="background:#064E3B;">⚙️<span class="news-tag">Industry</span></div>
+        <div class="news-body"><div class="news-date">June 2026</div><div class="news-title">New Voith Turbo Variable Speed Couplings Now Available</div><p class="news-excerpt">As authorized representative, WTC now offers the latest generation of Voith geared variable speed couplings for power plants and industrial applications.</p></div>
+      </div>
+      <div class="news-card fade-in">
+        <div class="news-img" style="background:#1A1A6E;">🏭<span class="news-tag">Services</span></div>
+        <div class="news-body"><div class="news-date">May 2026</div><div class="news-title">WTC Launches Enhanced Engineering Services Program</div><p class="news-excerpt">Worthwater Technology Corporation launches an enhanced engineering services program to provide faster technical support and after-market attention to our clients.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT WTC -->
+<section class="section" id="contact-wtc" style="background: white;">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-eyebrow">Get In Touch</div>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-desc">Have a project requirement or need a quotation? Our WTC team is ready to assist you.</p>
+    </div>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3862.842905529066!2d120.98602427510397!3d14.493706085980023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ce828e6a1f07%3A0xd1e992d3ea7f0f9!2sWorthrand%20Petropower%20Corporation!5e0!3m2!1sen!2sph!4v1782974164955!5m2!1sen!2sph" width="100%" height="350" style="border:0;border-radius:16px;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-info-title">We'd love to hear from you</div>
+        <p class="contact-info-sub">Whether you need industrial equipment, engineering services, or technical consultation — reach out and we'll get back to you promptly.</p>
+        <div class="contact-detail"><div class="cd-icon">📍</div><div class="cd-info"><div class="cd-label">Office Address</div><div class="cd-value">Room 403, 4th Floor Doña Eusebia Rodriguez Bldg.,<br>0611 Quirino Ave., San Dionisio,<br>Parañaque City, 1700 Metro Manila</div></div></div>
+        <div class="contact-detail"><div class="cd-icon">📞</div><div class="cd-info"><div class="cd-label">Phone / Mobile</div><div class="cd-value">0917 891 3124<br>(632) 8 825-3928 / 8 241-3689</div></div></div>
+        <div class="contact-detail"><div class="cd-icon">📠</div><div class="cd-info"><div class="cd-label">Fax</div><div class="cd-value">(632) 8 825-2155</div></div></div>
+      </div>
+      <div class="contact-form">
+        <div class="form-title">Send us a Message — WTC</div>
+        <form id="wtcContactForm">
+          <div class="form-row">
+            <div class="form-field"><label>First Name</label><input type="text" name="first_name" placeholder="Juan" required></div>
+            <div class="form-field"><label>Last Name</label><input type="text" name="last_name" placeholder="Dela Cruz" required></div>
+          </div>
+          <div class="form-field"><label>Email Address</label><input type="email" name="email" placeholder="you@company.com" required></div>
+          <div class="form-field"><label>Phone Number</label><input type="tel" name="phone" placeholder="0917 000 0000"></div>
+          <div class="form-field">
+            <label>Subject / Product Inquiry</label>
+            <select name="subject" required>
+              <option value="">Select a topic...</option>
+              <option>Voith Turbo — Variable Speed Couplings</option>
+              <option>Milton Roy — Metering Pumps</option>
+              <option>Pleuger — Submersible Pumps</option>
+              <option>NOV — Fiberglass Pipes & Fittings</option>
+              <option>Thermax — Water Treatment Chemicals</option>
+              <option>Truwater — Cooling Towers</option>
+              <option>Sunrui — Electrochlorination Systems</option>
+              <option>Industrial Valves</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+          <div class="form-field"><label>Message</label><textarea name="message" placeholder="Tell us about your requirement or project..." required></textarea></div>
+          <input type="hidden" name="company" value="WTC - Worthwater Technology Corporation">
+          <button type="submit" class="form-submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER WTC -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand-name">WORTHWATER</div>
+        <div class="brand-sub">Technology Corporation</div>
+        <p>Authorized representative of world-class industrial equipment manufacturers. 100% Filipino-owned corporation serving Philippine industries since 1996.</p>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#home-wtc">Home</a></li><li><a href="#about-wtc">About Us</a></li><li><a href="#services-wtc">Products</a></li><li><a href="#news-wtc">News</a></li><li><a href="#contact-wtc">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Principals</h4><ul><li><a href="#services">Voith Turbo</a></li><li><a href="#services">Milton Roy</a></li><li><a href="#services">Pleuger Industries</a></li><li><a href="#services">Thermax Chemicals</a></li><li><a href="#services">Truwater Cooling Tower</a></li></ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul><li><a href="#">0917 891 3124</a></li><li><a href="#">(632) 8 825-3928</a></li><li><a href="#">(632) 8 241-3689</a></li><li><a href="#">Parañaque City, Metro Manila</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span class="footer-red">Worthwater Technology Corporation</span>. All rights reserved.</p>
+      <p>SEC Registered · 100% Filipino-Owned · Established 1996</p>
+      <a href="./admin.html" style="font-size:11px;color:hsla(0,0%,100%,0.2);margin-top:8px;display:block;">Admin</a>
+    </div>
+  </div>
+</footer>
+
+</div><!-- end WTC -->
+
+<!-- PAGE TRANSITION OVERLAY -->
+<div class="page-transition" id="pageTransition">
+  <div class="page-transition-circle"></div>
+</div>
+
+<!-- PRINCIPAL GALLERY MODAL -->
+<div class="principal-modal" id="principalModal" onclick="if(event.target===this) closePrincipalGallery()">
+  <div class="principal-modal-box">
+    <div class="principal-modal-header">
+      <div class="principal-modal-title" id="principalModalTitle"></div>
+      <button class="principal-modal-close" onclick="closePrincipalGallery()">&times;</button>
+    </div>
+    <div class="principal-modal-body" id="principalModalBody"></div>
+    <div class="principal-modal-foot">
+      <div class="pm-foot-text">Interested in <strong id="principalFootName"></strong>?</div>
+      <button type="button" class="pm-inquire" id="principalInquireBtn" onclick="inquireFromGallery()">Inquire about this &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING BUTTONS -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<a href="https://wa.me/639178913124" target="_blank" style="position:fixed;bottom:30px;right:30px;width:52px;height:52px;background:#25D366;color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 15px hsla(0,0%,0%,0.3);z-index:999;text-decoration:none;" title="Chat on WhatsApp">💬</a>
+
+<script src="./assets/script.js"></script>
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbznzt6LKktB3JUuuYCUqWqmnN_ZKfBkJsaee3QOxu2xX-Pz6IrjyVkzN2ickiVip20pGw/exec';
+
+// COMPANY TOGGLE
+// PRINCIPAL / PRODUCT GALLERY MODAL
+function openPrincipalGallery(key, count, title, folder) {
+  folder = folder || 'principals';
+  const modal = document.getElementById('principalModal');
+  const body = document.getElementById('principalModalBody');
+  const titleEl = document.getElementById('principalModalTitle');
+  titleEl.textContent = title;
+  window._galleryCtx = { title: title, folder: folder };
+  const footName = document.getElementById('principalFootName');
+  if (footName) footName.textContent = title;
+  body.innerHTML = '';
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  for (let i = 1; i <= count; i++) {
+    const img = document.createElement('img');
+    img.alt = title + ' product sheet ' + i;
+    img.loading = 'eager';
+    img.src = `./images/${folder}/${key}-${i}.jpg`;
+    img.style.animationDelay = (i * 0.08) + 's';
+    img.onerror = function() { this.style.display = 'none'; };
+    body.appendChild(img);
+  }
+}
+// ===== INQUIRY HELPERS (prefill the contact form from products / search) =====
+function pickSubject(select, title, company, forced) {
+  const opts = Array.from(select.options);
+  const find = txt => opts.find(o => o.text.toLowerCase().includes(txt.toLowerCase()));
+  let want = forced || null;
+  const t = (title || '').toLowerCase();
+  if (!want && company === 'wpc') {
+    if (t.includes('chemical')) want = 'Chemical Pumps';
+    else if (t.includes('seal')) want = 'Spare Parts';
+    else if (t) want = 'Industrial Process Pumps';
+  } else if (!want) {
+    const map = [['voith', 'Voith'], ['milton', 'Milton Roy'], ['pleuger', 'Pleuger'], ['thermax', 'Thermax'], ['truwater', 'Truwater'], ['sunrui', 'Sunrui'], ['kojo', 'Industrial Valves'], ['kolink', 'Industrial Valves']];
+    const hit = map.find(m => t.includes(m[0])) || (/^nov\b/.test(t) ? ['nov', 'NOV'] : null);
+    if (hit) want = hit[1];
+  }
+  const match = (want && find(want)) || find('General Inquiry');
+  if (match) select.value = match.value || match.text;
+}
+
+function openInquiry(company, opts) {
+  opts = opts || {};
+  const section = document.getElementById('section-' + company);
+  const run = () => {
+    const form = document.getElementById(company === 'wtc' ? 'wtcContactForm' : 'wpcContactForm');
+    if (!form) return;
+    const sel = form.querySelector('select[name="subject"]');
+    if (sel) pickSubject(sel, opts.title, company, opts.subject);
+    const ta = form.querySelector('textarea[name="message"]');
+    if (ta && opts.message && (!ta.value.trim() || ta.dataset.auto === '1')) { ta.value = opts.message; ta.dataset.auto = '1'; }
+    const y = form.getBoundingClientRect().top + window.scrollY - 110;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+    form.classList.remove('form-flash'); void form.offsetWidth; form.classList.add('form-flash');
+    setTimeout(() => form.classList.remove('form-flash'), 1900);
+    setTimeout(() => { const f = form.querySelector('input[name="first_name"]'); if (f) f.focus({ preventScroll: true }); }, 800);
+  };
+  if (section && !section.classList.contains('active')) { switchCompany(company); setTimeout(run, 1100); }
+  else run();
+}
+window.openInquiry = openInquiry;
+
+function inquireFromGallery() {
+  const ctx = window._galleryCtx || {};
+  const company = ctx.folder === 'wpc-products' ? 'wpc' : 'wtc';
+  closePrincipalGallery();
+  setTimeout(() => openInquiry(company, { title: ctx.title, message: 'Hello, I would like to inquire about: ' + (ctx.title || 'your products') + '.' }), 120);
+}
+
+document.addEventListener('input', e => { if (e.target.matches && e.target.matches('textarea[name="message"]')) delete e.target.dataset.auto; });
+
+function closePrincipalGallery() {
+  document.getElementById('principalModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Keyboard navigation for the product gallery modal
+document.addEventListener('keydown', (e) => {
+  const modal = document.getElementById('principalModal');
+  if (!modal.classList.contains('open')) return;
+
+  if (e.key === 'Escape') {
+    closePrincipalGallery();
+  } else if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+    e.preventDefault();
+    document.getElementById('principalModalBody').scrollBy({ top: 320, behavior: 'smooth' });
+  } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+    e.preventDefault();
+    document.getElementById('principalModalBody').scrollBy({ top: -320, behavior: 'smooth' });
+  }
+});
+
+function toggleCompanyDropdown(e) {
+  e.stopPropagation();
+  document.getElementById('companyDropdown').classList.toggle('open');
+  document.getElementById('companySwitcherToggle').classList.toggle('open');
+}
+function closeCompanyDropdown() {
+  document.getElementById('companyDropdown').classList.remove('open');
+  document.getElementById('companySwitcherToggle').classList.remove('open');
+}
+document.addEventListener('click', (e) => {
+  const toggle = document.getElementById('companySwitcherToggle');
+  if (toggle && !toggle.contains(e.target)) closeCompanyDropdown();
+});
+
+function swapLogo(src) {
+  const logo = document.getElementById('navLogo');
+  logo.classList.add('fading');
+  setTimeout(() => {
+    logo.src = src;
+    logo.classList.remove('fading');
+  }, 200);
+}
+
+function switchCompany(company, evt) {
+  const overlay = document.getElementById('pageTransition');
+  const x = evt ? evt.clientX + 'px' : '50%';
+  const y = evt ? evt.clientY + 'px' : '50%';
+  overlay.style.setProperty('--ox', x);
+  overlay.style.setProperty('--oy', y);
+  overlay.classList.toggle('wtc', company === 'wtc');
+  closeCompanyDropdown();
+
+  overlay.classList.add('run');
+
+  setTimeout(() => {
+    applyCompanySwitch(company);
+    overlay.classList.remove('run');
+    setTimeout(() => { if (window.playHero) window.playHero(company); }, 200);
+  }, 650);
+}
+
+function applyCompanySwitch(company) {
+  document.querySelectorAll('.company-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.company-dropdown-item').forEach(b => b.classList.remove('active'));
+
+  document.getElementById('section-' + company).classList.add('active');
+  document.getElementById('dd' + company.toUpperCase()).classList.add('active');
+
+  const suffix = company === 'wtc' ? '-wtc' : '';
+
+  if (company === 'wpc') {
+    document.getElementById('navName').textContent = 'WORTHRAND';
+    document.getElementById('navSub').textContent = 'Petropower Corporation';
+    document.getElementById('navServicesLink').textContent = 'Services';
+    swapLogo('./images/logo.png');
+    document.getElementById('navbar').classList.remove('wtc-theme');
+    document.body.classList.remove('wtc-active');
+  } else {
+    document.getElementById('navName').textContent = 'WORTHWATER';
+    document.getElementById('navSub').textContent = 'Technology Corporation';
+    document.getElementById('navServicesLink').textContent = 'Products';
+    swapLogo('./images/logo-wtc.png');
+    document.getElementById('navbar').classList.add('wtc-theme');
+    document.body.classList.add('wtc-active');
+  }
+
+  // Point nav + mobile menu anchors to the correct section for the active company
+  ['home','about','services','why','news','contact'].forEach(sec => {
+    const target = '#' + sec + suffix;
+    const navLink = document.getElementById('nav' + sec.charAt(0).toUpperCase() + sec.slice(1) + 'Link');
+    const mobLink = document.getElementById('mob' + sec.charAt(0).toUpperCase() + sec.slice(1) + 'Link');
+    if (navLink) navLink.setAttribute('href', target);
+    if (mobLink) mobLink.setAttribute('href', target);
+  });
+
+  window.scrollTo({top: 0, behavior: 'instant'});
+
+  if (window.resetHeroes) window.resetHeroes();
+  if (window.updateFans) window.updateFans();
+  if (window.updateScrollFx) window.updateScrollFx();
+  if (window.updateStories) window.updateStories();
+
+  // Re-run scroll animations for new section
+  setTimeout(() => {
+    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => {
+      observer.observe(el);
+    });
+  }, 100);
+}
+
+// CONTACT FORM SUBMIT
+function submitForm(formId, companyName) {
+  const form = document.getElementById(formId);
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var btn = form.querySelector('.form-submit');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    var formData = {
+      first_name: this.first_name.value,
+      last_name: this.last_name.value,
+      email: this.email.value,
+      phone: this.phone.value,
+      subject: this.subject.value,
+      message: this.message.value,
+      company: companyName
+    };
+    fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(formData) })
+    .then(r => r.json())
+    .then(() => {
+      alert('Message sent successfully! We will get back to you soon.');
+      form.reset();
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+    })
+    .catch(() => {
+      alert('Message sent! Thank you for contacting us.');
+      form.reset();
+      btn.textContent = 'Send Message →';
+      btn.disabled = false;
+    });
+  });
+}
+
+submitForm('wpcContactForm', 'WPC - Worthrand Petropower Corporation');
+submitForm('wtcContactForm', 'WTC - Worthwater Technology Corporation');
+
+// NAVBAR SCROLL
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  document.getElementById('backToTop').style.display = window.scrollY > 400 ? 'flex' : 'none';
+});
+
+// ACTIVE NAV
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => { if (window.scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+  navLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+});
+
+// HAMBURGER
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+document.getElementById('mobileMenu').querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+});
+
+// SCROLL ANIMATIONS
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el => observer.observe(el));
+
+// ===== CARD FAN (plays by itself when it comes into view) =====
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fans = Array.from(document.querySelectorAll('.fan-section'));
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+
+  function layout(fan) {
+    const cards = fan.querySelectorAll('.fan-card');
+    const n = cards.length;
+    if (!n) return;
+    const e = ease(clamp(fan._p || 0, 0, 1));
+    const w = cards[0].offsetWidth || 200;
+    const small = window.innerWidth < 700;
+    const rowStep = w * (small ? 1.06 : 1.12);
+    const fanStep = w * (small ? 0.34 : 0.42);
+    cards.forEach((card, i) => {
+      const t = i - (n - 1) / 2;
+      const at = Math.abs(t);
+      const x = lerp(t * rowStep, t * fanStep, e);
+      const y = lerp(0, at * at * w * 0.045, e);
+      const rY = lerp(-t * 16, 0, e);
+      const rZ = lerp(0, t * 11, e);
+      const sc = lerp(1 - at * 0.05, 1 + (at === 0 ? 0.08 : 0), e);
+      card.style.transform = `translate3d(${x}px, ${y}px, 0) rotateY(${rY}deg) rotateZ(${rZ}deg) scale(${sc})`;
+      card.style.zIndex = 10 - Math.round(at);
+    });
+  }
+
+  function animateTo(fan, target) {
+    cancelAnimationFrame(fan._raf);
+    const from = fan._p || 0;
+    if (reduce) { fan._p = target; layout(fan); return; }
+    const dur = 1500 * Math.max(0.2, Math.abs(target - from));
+    const start = performance.now() + (target === 1 ? 250 : 0);
+    (function step(now) {
+      const t = clamp((now - start) / dur, 0, 1);
+      fan._p = from + (target - from) * t;
+      layout(fan);
+      if (t < 1) fan._raf = requestAnimationFrame(step);
+    })(performance.now());
+  }
+
+  fans.forEach(fan => { fan._p = 0; fan._on = false; layout(fan); });
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      const fan = en.target;
+      if (en.intersectionRatio >= 0.3 && !fan._on) { fan._on = true; animateTo(fan, 1); }
+      else if (en.intersectionRatio === 0 && fan._on) { fan._on = false; cancelAnimationFrame(fan._raf); fan._p = 0; layout(fan); }
+    }), { threshold: [0, 0.3] });
+    fans.forEach(fan => io.observe(fan));
+  } else fans.forEach(fan => { fan._p = 1; layout(fan); });
+
+  window.addEventListener('resize', () => fans.forEach(layout));
+  window.updateFans = () => fans.forEach(layout);
+})();
+
+// ===== PRELOADER / HERO INTRO / STATEMENT / CURVE REVEAL / MAGNETIC =====
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const heroes = Array.from(document.querySelectorAll('.hero'));
+
+  // Split hero headline into words (masked slide-up)
+  function splitWords(el) {
+    let idx = 0;
+    (function walk(node) {
+      Array.from(node.childNodes).forEach(ch => {
+        if (ch.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          ch.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const w = document.createElement('span'); w.className = 'w';
+            const wi = document.createElement('span'); wi.className = 'wi';
+            wi.style.setProperty('--i', idx++); wi.textContent = part;
+            w.appendChild(wi); frag.appendChild(w);
+          });
+          ch.replaceWith(frag);
+        } else if (ch.nodeType === 1) walk(ch);
+      });
+    })(el);
+  }
+  heroes.forEach(h => {
+    const t = h.querySelector('.hero-title');
+    if (t) { t.setAttribute('aria-label', t.textContent.trim()); splitWords(t); h.classList.add('split-armed'); }
+  });
+
+  window.playHero = function (company) {
+    const hero = document.getElementById(company === 'wtc' ? 'home-wtc' : 'home');
+    heroes.forEach(h => h.classList.remove('play'));
+    if (hero) { void hero.offsetWidth; hero.classList.add('play'); }
+  };
+  window.resetHeroes = function () { heroes.forEach(h => h.classList.remove('play')); };
+  setTimeout(() => { if (!heroes.some(h => h.classList.contains('play'))) window.playHero('wpc'); }, 6500);
+
+  // Preloader
+  const pre = document.getElementById('preloader');
+  const t0 = performance.now();
+  let finished = false;
+  function finish() {
+    if (finished) return; finished = true;
+    if (pre) pre.classList.add('done');
+    document.body.classList.remove('preloading');
+    setTimeout(() => window.playHero('wpc'), reduce ? 0 : 450);
+    setTimeout(() => { if (pre) pre.remove(); }, 1300);
+  }
+  function ready() { setTimeout(finish, Math.max(0, (reduce ? 0 : 1500) - (performance.now() - t0))); }
+  if (document.readyState === 'complete') ready(); else window.addEventListener('load', ready);
+  setTimeout(finish, 4500);
+
+  // Statement: words light up with scroll
+  const statements = Array.from(document.querySelectorAll('[data-statement]')).map(el => {
+    const words = [];
+    (function walk(node, hl) {
+      Array.from(node.childNodes).forEach(ch => {
+        if (ch.nodeType === 3) {
+          const frag = document.createDocumentFragment();
+          ch.textContent.split(/(\s+)/).forEach(part => {
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+            const sp = document.createElement('span');
+            sp.className = 'sw' + (hl ? ' hl' : ''); sp.textContent = part;
+            words.push(sp); frag.appendChild(sp);
+          });
+          ch.replaceWith(frag);
+        } else if (ch.nodeType === 1) walk(ch, hl || ch.tagName === 'EM');
+      });
+    })(el, false);
+    return { el, words };
+  });
+  function updateStatements() {
+    const vh = window.innerHeight;
+    statements.forEach(({ el, words }) => {
+      if (!el.offsetHeight) return;
+      const r = el.getBoundingClientRect();
+      const p = reduce ? 1 : Math.max(0, Math.min(1, (vh * 0.8 - r.top) / (vh * 0.5 + r.height * 0.3)));
+      const n = words.length;
+      words.forEach((w, i) => w.classList.toggle('on', i < p * n * 1.02));
+    });
+  }
+
+  // Sections expand from a rounded inset card to full width as they scroll in
+  const curveEls = Array.from(document.querySelectorAll('.company-section .section, .statement-section'));
+  function updateCurves() {
+    if (reduce || window.innerWidth <= 768) {
+      curveEls.forEach(el => { if (el.style.clipPath) el.style.clipPath = ''; });
+      return;
+    }
+    const vh = window.innerHeight;
+    curveEls.forEach(el => {
+      if (!el.offsetHeight) return;
+      const r = el.getBoundingClientRect();
+      const p = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.55)));
+      const e = 1 - Math.pow(1 - p, 3);
+      if (e >= 0.999) { if (el.style.clipPath) el.style.clipPath = ''; return; }
+      const inset = (1 - e) * 3.5, rad = (1 - e) * 64;
+      el.style.clipPath = `inset(0 ${inset}% 0 ${inset}% round ${rad}px ${rad}px 0 0)`;
+    });
+  }
+
+  let ticking = false;
+  function updateAll() { updateStatements(); updateCurves(); ticking = false; }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(updateAll); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  window.addEventListener('load', updateAll);
+  window.updateScrollFx = updateAll;
+  updateAll();
+
+  // Magnetic buttons
+  if (!reduce) {
+    document.querySelectorAll('.btn-primary, .btn-outline').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = (e.clientX - (r.left + r.width / 2)) * 0.25;
+        const y = (e.clientY - (r.top + r.height / 2)) * 0.35;
+        btn.style.transform = `translate(${x}px, ${y}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+})();
+
+// ===== CARD GLARE / TITLE DECODE / SCROLL PIPELINE =====
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Glare follows the cursor on cards
+  document.querySelectorAll('.principal-card, .why-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--gx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--gy', (e.clientY - r.top) + 'px');
+    });
+  });
+})();
+
+// ===== STORY VIDEO PLAYER (timeline-driven, play / pause / seek) =====
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const stories = Array.from(document.querySelectorAll('.story'));
+  if (!stories.length) return;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const ease = t => t * t * (3 - 2 * t);
+  const fmt = (sec, up) => { sec = Math.max(0, up ? Math.round(sec) : Math.floor(sec)); return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0'); };
+
+  stories.forEach(st => {
+    st._steps = JSON.parse(st.dataset.steps);
+    const n = st._steps.length;
+    st._D = parseFloat(st.dataset.dwell) || 3.4;
+    st._X = parseFloat(st.dataset.trans) || 1.1;
+    st._seg = st._D + st._X;
+    st._T = n * st._D + (n - 1) * st._X;
+    st._cam = st.querySelector('.story-cam');
+    st._imgs = Array.from(st.querySelectorAll('.story-cam > img'));
+    st._caps = Array.from(st.querySelectorAll('.story-cap'));
+    st._frame = st.querySelector('.story-frame');
+    st._t = 0; st._playing = false; st._userPaused = false; st._ended = false; st._seeking = false;
+    st.classList.add('paused');
+  });
+
+  function render(st) {
+    const steps = st._steps, n = steps.length, t = st._t;
+    const k = Math.min(n - 1, Math.floor(t / st._seg));
+    const local = t - k * st._seg;
+    let g = 0, b = k;
+    if (k < n - 1 && local > st._D) { g = ease(clamp((local - st._D) / st._X, 0, 1)); b = k + 1; }
+    const A = steps[k], B = steps[b];
+    const s = lerp(A[2], B[2], g);
+    const fx = clamp(lerp(A[0], B[0], g), 0.5 / s, 1 - 0.5 / s);
+    const fy = clamp(lerp(A[1], B[1], g), 0.5 / s, 1 - 0.5 / s);
+    st._cam.style.transform = 'translate(' + ((0.5 - s * fx) * 100) + '%, ' + ((0.5 - s * fy) * 100) + '%) scale(' + s + ')';
+    st._imgs.forEach((im, m) => { im.style.opacity = String((A[3] === m ? 1 - g : 0) + (B[3] === m ? g : 0)); });
+    st._caps.forEach((c, idx) => {
+      let o = 0, y = 0;
+      if (b === k) { if (idx === k) o = 1; }
+      else if (idx === k) { o = clamp(1 - g * 2, 0, 1); y = -(1 - o) * 18; }
+      else if (idx === b) { o = clamp(g * 2 - 1, 0, 1); y = (1 - o) * 18; }
+      if (idx === 0 && t < 0.6 && st._playing) o = Math.min(o, t / 0.6);
+      c.style.opacity = String(o);
+      c.style.transform = 'translateY(' + y + 'px)';
+    });
+    st.dataset.active = String(g > 0.5 ? b : k);
+  }
+
+  let raf = 0, last = 0;
+  function loop(now) {
+    const dt = Math.min(0.1, (now - last) / 1000); last = now;
+    let any = false;
+    stories.forEach(st => {
+      if (!st._playing) return;
+      any = true;
+      st._t += dt;
+      if (st._t >= st._T) {
+        st._t = st._T;
+        st._hold = (st._hold || 0) + dt;
+        if (st._hold >= 1.3) { st._hold = 0; restart(st); }
+      }
+      render(st);
+    });
+    raf = any ? requestAnimationFrame(loop) : 0;
+  }
+  function setPlaying(st, v) {
+    st._playing = v;
+    st.classList.toggle('is-playing', v);
+    st.classList.toggle('paused', !v);
+    if (v && !raf) { last = performance.now(); raf = requestAnimationFrame(loop); }
+  }
+  function restart(st) {
+    st._t = 0; st._ended = false; st.classList.remove('ended');
+    st.classList.remove('in'); void st.offsetWidth; st.classList.add('in');
+    render(st);
+  }
+  function play(st) {
+    if (st._ended) restart(st);
+    st.classList.add('in');
+    setPlaying(st, true);
+  }
+
+  stories.forEach(st => {
+    render(st);
+  });
+
+  function visibleEnough(st) {
+    if (!st.offsetHeight) return false;
+    const r = st._frame.getBoundingClientRect();
+    const vis = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+    return r.height > 0 && vis / r.height >= 0.5;
+  }
+  function evaluate(st) {
+    if (!st.offsetHeight) { if (st._playing) setPlaying(st, false); return; }
+    if (visibleEnough(st)) { if (!st._playing && !st._userPaused && !st._ended && !st._seeking && !reduce) play(st); }
+    else if (st._playing) setPlaying(st, false);
+  }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => evaluate(e.target._story)), { threshold: [0, 0.25, 0.5, 0.75, 1] });
+    stories.forEach(st => { st._frame._story = st; io.observe(st._frame); });
+  }
+  window.addEventListener('scroll', () => stories.forEach(evaluate), { passive: true });
+  window.updateStories = () => stories.forEach(evaluate);
+})();
+// ===== PRODUCT SEARCH / FILTER =====
+(function () {
+  const cfg = {
+    wpc: { ph: 'Search products, e.g. vertical, fire, decoking', chips: ['Overhung', 'Vertical', 'Magnetic', 'Fire', 'Decoking'], noun: 'product lines' },
+    wtc: { ph: 'Search principals or products, e.g. valve, cooling tower', chips: ['Pumps', 'Valves', 'Chemicals', 'Cooling', 'Pipes', 'Gearboxes'], noun: 'principals' }
+  };
+  document.querySelectorAll('.principals-grid').forEach(grid => {
+    const comp = grid.closest('#section-wtc') ? 'wtc' : 'wpc';
+    const c = cfg[comp];
+    const cards = Array.from(grid.querySelectorAll('.principal-card'));
+    cards.forEach(card => { card._text = card.textContent.toLowerCase().replace(/\s+/g, ' '); });
+
+    const bar = document.createElement('div');
+    bar.className = 'pf-bar';
+    bar.innerHTML =
+      '<label class="pf-search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>' +
+      '<input type="search" placeholder="' + c.ph + '" aria-label="Search products" autocomplete="off"></label>' +
+      '<div class="pf-chips">' + c.chips.map(x => '<button type="button" class="pf-chip">' + x + '</button>').join('') + '</div>' +
+      '<div class="pf-count" aria-live="polite"></div>';
+    grid.parentNode.insertBefore(bar, grid);
+
+    const empty = document.createElement('div');
+    empty.className = 'pf-empty'; empty.hidden = true;
+    empty.innerHTML = 'No match for <strong class="pf-q"></strong>.<br>Try another keyword, <button type="button" class="pf-clear">clear the search</button>, or <button type="button" class="pf-ask">ask us about it</button>.';
+    grid.parentNode.insertBefore(empty, grid.nextSibling);
+
+    const input = bar.querySelector('input');
+    const chips = Array.from(bar.querySelectorAll('.pf-chip'));
+    const count = bar.querySelector('.pf-count');
+
+    function apply() {
+      const q = input.value.trim().toLowerCase();
+      const terms = q.split(' ').filter(Boolean);
+      let shown = 0;
+      cards.forEach(card => {
+        const ok = terms.every(t => card._text.includes(t));
+        const was = card.style.display === 'none';
+        card.style.display = ok ? '' : 'none';
+        if (ok) { shown++; if (was) { card.classList.remove('pf-pop'); void card.offsetWidth; card.classList.add('pf-pop'); } }
+      });
+      empty.hidden = shown !== 0;
+      empty.querySelector('.pf-q').textContent = '\u201C' + input.value.trim() + '\u201D';
+      count.textContent = q ? shown + ' of ' + cards.length + ' match' : cards.length + ' ' + c.noun;
+      chips.forEach(ch => ch.classList.toggle('on', q !== '' && ch.textContent.toLowerCase() === q));
+    }
+    input.addEventListener('input', apply);
+    input.addEventListener('keydown', e => { if (e.key === 'Escape') { input.value = ''; apply(); } });
+    chips.forEach(ch => ch.addEventListener('click', () => {
+      input.value = (input.value.trim().toLowerCase() === ch.textContent.toLowerCase()) ? '' : ch.textContent;
+      apply();
+    }));
+    empty.querySelector('.pf-clear').addEventListener('click', () => { input.value = ''; apply(); input.focus(); });
+    empty.querySelector('.pf-ask').addEventListener('click', () => {
+      openInquiry(comp, { subject: 'General Inquiry', message: 'Hello, I could not find "' + input.value.trim() + '" in your product list. Do you carry it?' });
+    });
+    apply();
+  });
+})();
+</script>
+</body>
+</html>
