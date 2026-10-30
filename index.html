@@ -837,6 +837,29 @@ footer { background: var(--navy-dark); color: white; padding: 60px 40px 30px; wi
   .mfr-two-col { grid-template-columns: 1fr; }
   .company-toggle-bar { padding: 8px 20px; }
 }
+
+/* ===== BIGGER LOGO + SIDE COMPANY SWITCH ===== */
+.navbar { height: 92px; }
+.navbar.scrolled { height: 68px; }
+.nav-logo-img { height: 66px; }
+.navbar.scrolled .nav-logo-img { height: 50px; }
+.nav-brand { cursor: default; }
+.nav-left { display: flex; align-items: center; gap: 28px; min-width: 0; }
+.company-switch { display: inline-flex; background: hsla(0,0%,100%,0.08); border: 1px solid hsla(0,0%,100%,0.18); border-radius: 100px; padding: 3px; gap: 2px; flex-shrink: 0; }
+.company-switch .company-dropdown-item { width: auto; padding: 6px 14px; border-radius: 100px; background: transparent; color: hsla(0,0%,100%,0.75); font-family: var(--ff-heading); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; display: block; }
+.company-switch .company-dropdown-item:hover { background: hsla(0,0%,100%,0.12); color: white; }
+.company-switch .company-dropdown-item.active { background: var(--red); color: white; }
+body.wtc-active .company-switch .company-dropdown-item.active { background: var(--wtc-blue); }
+@media (max-width: 480px) {
+  .navbar { height: 76px; }
+  .navbar.scrolled { height: 64px; }
+  .nav-logo-img { height: 46px; }
+  .navbar.scrolled .nav-logo-img { height: 40px; }
+  .nav-left { gap: 10px; }
+  .nav-brand-text { display: none; }
+  .nav-logo-img { height: 50px; }
+  .company-switch .company-dropdown-item { padding: 5px 10px; font-size: 11px; }
+}
 </style>
 </head>
 <body class="preloading">
@@ -857,22 +880,17 @@ footer { background: var(--navy-dark); color: white; padding: 60px 40px 30px; wi
 <!-- COMPANY TOGGLE BAR -->
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
-  <div class="nav-brand" id="companySwitcherToggle" onclick="toggleCompanyDropdown(event)">
-    <img src="./images/logo.png" alt="Logo" class="nav-logo-img" id="navLogo">
-    <div class="nav-brand-text">
-      <div class="name" id="navName">WORTHRAND</div>
-      <div class="sub" id="navSub">Petropower Corporation</div>
+  <div class="nav-left">
+    <div class="nav-brand" id="companySwitcherToggle">
+      <img src="./images/logo.png" alt="Logo" class="nav-logo-img" id="navLogo">
+      <div class="nav-brand-text">
+        <div class="name" id="navName">WORTHRAND</div>
+        <div class="sub" id="navSub">Petropower Corporation</div>
+      </div>
     </div>
-    <svg class="nav-brand-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <div class="company-dropdown" id="companyDropdown">
-      <button class="company-dropdown-item active" id="ddWPC" onclick="switchCompany('wpc', event); event.stopPropagation();">
-        <span class="company-dot" style="background: var(--red);"></span>
-        <span><strong>Worthrand Petropower</strong><br><small>WPC</small></span>
-      </button>
-      <button class="company-dropdown-item" id="ddWTC" onclick="switchCompany('wtc', event); event.stopPropagation();">
-        <span class="company-dot" style="background: var(--wtc-blue);"></span>
-        <span><strong>Worthwater Technology</strong><br><small>WTC</small></span>
-      </button>
+    <div class="company-switch" id="companyDropdown" role="group" aria-label="Choose company">
+      <button type="button" class="company-dropdown-item active" id="ddWPC" onclick="switchCompany('wpc', event); event.stopPropagation();">WPC</button>
+      <button type="button" class="company-dropdown-item" id="ddWTC" onclick="switchCompany('wtc', event); event.stopPropagation();">WTC</button>
     </div>
   </div>
   <ul class="nav-links">
