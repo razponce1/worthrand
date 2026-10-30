@@ -860,6 +860,40 @@ body.wtc-active .company-switch .company-dropdown-item.active { background: var(
   .nav-logo-img { height: 50px; }
   .company-switch .company-dropdown-item { padding: 5px 10px; font-size: 11px; }
 }
+
+/* ===== v3: larger logo, three-line company menu, hero watermark ===== */
+.navbar { height: 100px; }
+.navbar.scrolled { height: 72px; }
+.nav-logo-img { height: 80px; }
+.navbar.scrolled .nav-logo-img { height: 54px; }
+.hero { padding-top: 150px; }
+.company-switch { display: none; }
+.company-menu { position: relative; margin-left: 14px; }
+.company-menu-btn { width: 44px; height: 44px; border-radius: 10px; border: 1px solid hsla(0,0%,100%,0.25); background: hsla(0,0%,100%,0.08); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; transition: background .2s ease, border-color .2s ease; }
+.company-menu-btn:hover, .company-menu.open .company-menu-btn { background: hsla(0,0%,100%,0.18); border-color: hsla(0,0%,100%,0.5); }
+.company-menu-btn span { width: 20px; height: 2px; background: white; border-radius: 2px; }
+.company-menu .company-dropdown { left: auto; right: 0; top: calc(100% + 12px); }
+.hero-watermark { position: absolute; inset: 0; z-index: 1; pointer-events: none; background: url('./images/logo.png') no-repeat 50% 58% / min(900px, 85vw) auto; opacity: 0.07; }
+.hero-watermark.wtc { background-image: url('./images/logo-wtc.png'); }
+.mobile-menu { top: 100px; }
+@media (max-width: 768px) {
+  .company-menu { display: none; }
+  .company-switch { display: inline-flex; }
+}
+@media (max-width: 480px) {
+  .mobile-menu { top: 76px; }
+  .hero { padding-top: 130px; }
+}
+.nav-links { margin-left: auto; }
+.company-menu .company-dropdown-item br { display: none; }
+.company-menu .company-dropdown-item strong, .company-menu .company-dropdown-item small { line-height: 1.3; }
+@media (max-width: 768px) { .nav-links { margin-left: 0; } }
+@media (max-width: 480px) {
+  .navbar { height: 76px; }
+  .navbar.scrolled { height: 64px; }
+  .nav-logo-img { height: 54px; }
+  .navbar.scrolled .nav-logo-img { height: 44px; }
+}
 </style>
 </head>
 <body class="preloading">
@@ -881,16 +915,16 @@ body.wtc-active .company-switch .company-dropdown-item.active { background: var(
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="nav-left">
-    <div class="nav-brand" id="companySwitcherToggle">
+    <div class="nav-brand">
       <img src="./images/logo.png" alt="Logo" class="nav-logo-img" id="navLogo">
       <div class="nav-brand-text">
         <div class="name" id="navName">WORTHRAND</div>
         <div class="sub" id="navSub">Petropower Corporation</div>
       </div>
     </div>
-    <div class="company-switch" id="companyDropdown" role="group" aria-label="Choose company">
-      <button type="button" class="company-dropdown-item active" id="ddWPC" onclick="switchCompany('wpc', event); event.stopPropagation();">WPC</button>
-      <button type="button" class="company-dropdown-item" id="ddWTC" onclick="switchCompany('wtc', event); event.stopPropagation();">WTC</button>
+    <div class="company-switch" role="group" aria-label="Choose company">
+      <button type="button" class="company-dropdown-item active" data-company="wpc" onclick="switchCompany('wpc', event); event.stopPropagation();">WPC</button>
+      <button type="button" class="company-dropdown-item" data-company="wtc" onclick="switchCompany('wtc', event); event.stopPropagation();">WTC</button>
     </div>
   </div>
   <ul class="nav-links">
@@ -901,6 +935,19 @@ body.wtc-active .company-switch .company-dropdown-item.active { background: var(
     <li><a href="#news" id="navNewsLink">News</a></li>
     <li><a href="#contact" class="nav-cta" id="navContactLink">Contact Us</a></li>
   </ul>
+  <div class="company-menu" id="companySwitcherToggle">
+    <button type="button" class="company-menu-btn" aria-label="Choose company: Worthrand or Worthwater" onclick="toggleCompanyDropdown(event)"><span></span><span></span><span></span></button>
+    <div class="company-dropdown" id="companyDropdown">
+      <button type="button" class="company-dropdown-item active" data-company="wpc" onclick="switchCompany('wpc', event); event.stopPropagation();">
+        <span class="company-dot" style="background: var(--red);"></span>
+        <span><strong>Worthrand Petropower</strong><br><small>WPC</small></span>
+      </button>
+      <button type="button" class="company-dropdown-item" data-company="wtc" onclick="switchCompany('wtc', event); event.stopPropagation();">
+        <span class="company-dot" style="background: var(--wtc-blue);"></span>
+        <span><strong>Worthwater Technology</strong><br><small>WTC</small></span>
+      </button>
+    </div>
+  </div>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
   </div>
@@ -921,6 +968,7 @@ body.wtc-active .company-switch .company-dropdown-item.active { background: var(
 
 <!-- HERO WPC -->
 <section class="hero" id="home">
+  <div class="hero-watermark"></div>
   <div class="hero-bg-pattern"></div>
   <div class="hero-grid-lines"></div>
   <div class="hero-grid-glow"></div>
@@ -1392,6 +1440,7 @@ body.wtc-active .company-switch .company-dropdown-item.active { background: var(
 
 <!-- HERO WTC -->
 <section class="hero" id="home-wtc">
+  <div class="hero-watermark wtc"></div>
   <div class="hero-bg-pattern"></div>
   <div class="hero-grid-lines"></div>
   <div class="hero-grid-glow"></div>
@@ -2058,7 +2107,7 @@ function applyCompanySwitch(company) {
   document.querySelectorAll('.company-dropdown-item').forEach(b => b.classList.remove('active'));
 
   document.getElementById('section-' + company).classList.add('active');
-  document.getElementById('dd' + company.toUpperCase()).classList.add('active');
+  document.querySelectorAll('[data-company]').forEach(b => b.classList.toggle('active', b.dataset.company === company));
 
   const suffix = company === 'wtc' ? '-wtc' : '';
 
