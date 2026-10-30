@@ -916,6 +916,9 @@ body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { co
 }
 .nav-links { flex-shrink: 0; }
 .nav-links a { white-space: nowrap; }
+.pc-view { margin-top: 14px; font-size: 12px; font-weight: 700; color: var(--red); letter-spacing: 0.03em; }
+.principal-card:hover .pc-view { text-decoration: underline; }
+.pm-empty { padding: 40px 24px; text-align: center; color: var(--gray-text, #6b7280); font-size: 15px; line-height: 1.6; }
 </style>
 </head>
 <body class="preloading">
@@ -1225,45 +1228,55 @@ body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { co
       <p class="section-desc">Ruhrpumpen and Pleuger pump lines and systems for the Philippine market.</p>
     </div>
     <div class="principals-grid">
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('wpc-products/chemical-pumps-1.jpg|wpc-products/industrial-pumps-1.jpg|wpc-products/industrial-pumps-2.jpg',0,'Overhung Pumps','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Overhung Pumps</div>
         <ul class="principal-products"><li>Ruhrpumpen</li></ul>
+        <div class="pc-view">View product sheets &rarr;</div>
       </div>
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('wpc-products/horizontal-pumps-1.jpg|wpc-products/other-pumps-2.jpg',0,'Horizontal Pumping System','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Horizontal Pumping System</div>
         <ul class="principal-products"><li>Ruhrpumpen</li></ul>
+        <div class="pc-view">View product sheets &rarr;</div>
       </div>
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('wpc-products/other-pumps-1.jpg',0,'Between Bearing Pumps','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Between Bearing Pumps</div>
         <ul class="principal-products"><li>Ruhrpumpen</li></ul>
+        <div class="pc-view">View product sheets &rarr;</div>
       </div>
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('wpc-products/vertical-turbine-1.jpg|wpc-products/vertical-multistage-1.jpg',0,'Vertical Pumps','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Vertical Pumps</div>
         <ul class="principal-products"><li>Ruhrpumpen</li></ul>
+        <div class="pc-view">View product sheets &rarr;</div>
       </div>
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('wpc-products/chemical-pumps-2.jpg',0,'Magnetic Driven Pumps','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Magnetic Driven Pumps</div>
         <ul class="principal-products"><li>Ruhrpumpen</li></ul>
+        <div class="pc-view">View product sheets &rarr;</div>
       </div>
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('',0,'Reciprocating Plunger Pumps','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Reciprocating Plunger Pumps</div>
         <ul class="principal-products"><li>Ruhrpumpen</li></ul>
+        <div class="pc-view">Ask for details &rarr;</div>
       </div>
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('wpc-products/fire-pumps-1.jpg|wpc-products/fire-pumps-2.jpg|wpc-products/fire-pumps-3.jpg|wpc-products/split-case-fire-pumps-1.jpg|wpc-products/split-case-fire-pumps-2.jpg',0,'Fire Pumps &amp; Systems','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Fire Pumps &amp; Systems</div>
         <ul class="principal-products"><li>Ruhrpumpen</li></ul>
+        <div class="pc-view">View product sheets &rarr;</div>
       </div>
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('',0,'Decoking Systems','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Decoking Systems</div>
         <ul class="principal-products"><li>Ruhrpumpen</li></ul>
+        <div class="pc-view">Ask for details &rarr;</div>
       </div>
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('wpc-products/submersible-pumps-1.jpg|wpc-products/submersible-pumps-2.jpg|wpc-products/submersible-pumps-3.jpg|wpc-products/submersible-pumps-4.jpg|principals/pleuger-1.jpg',0,'Pleuger Submersible Pumps','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Pleuger Submersible Pumps</div>
         <ul class="principal-products"><li>Pleuger</li></ul>
+        <div class="pc-view">View product sheets &rarr;</div>
       </div>
-      <div class="principal-card fade-in">
+      <div class="principal-card fade-in" onclick="openPrincipalGallery('wpc-products/quarrying-pumps-1.jpg|wpc-products/quarrying-pumps-2.jpg|wpc-products/quarrying-pumps-3.jpg|wpc-products/submersible-nonclog-1.jpg',0,'Special Service','wpc-products')" style="cursor:pointer;" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
         <div class="principal-name">Special Service</div>
         <ul class="principal-products"><li>Ruhrpumpen</li></ul>
+        <div class="pc-view">View product sheets &rarr;</div>
       </div>
     </div>
   </div>
@@ -2003,15 +2016,27 @@ function openPrincipalGallery(key, count, title, folder) {
   body.innerHTML = '';
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
-  for (let i = 1; i <= count; i++) {
+  let files = [];
+  if (/\.(jpe?g|png)/i.test(key)) {
+    files = key.split('|').map(p => './images/' + p);
+  } else {
+    for (let i = 1; i <= count; i++) files.push(`./images/${folder}/${key}-${i}.jpg`);
+  }
+  if (!files.length) {
+    const p = document.createElement('p');
+    p.className = 'pm-empty';
+    p.textContent = 'The product sheet for ' + title + ' is not yet available online. Tap "Inquire about this" below and our team will send you the details.';
+    body.appendChild(p);
+  }
+  files.forEach((src, idx) => {
     const img = document.createElement('img');
-    img.alt = title + ' product sheet ' + i;
+    img.alt = title + ' product sheet ' + (idx + 1);
     img.loading = 'eager';
-    img.src = `./images/${folder}/${key}-${i}.jpg`;
-    img.style.animationDelay = (i * 0.08) + 's';
+    img.src = src;
+    img.style.animationDelay = ((idx + 1) * 0.08) + 's';
     img.onerror = function() { this.style.display = 'none'; };
     body.appendChild(img);
-  }
+  });
 }
 // ===== INQUIRY HELPERS (prefill the contact form from products / search) =====
 function pickSubject(select, title, company, forced) {
@@ -2020,9 +2045,8 @@ function pickSubject(select, title, company, forced) {
   let want = forced || null;
   const t = (title || '').toLowerCase();
   if (!want && company === 'wpc') {
-    if (t.includes('chemical')) want = 'Chemical Pumps';
-    else if (t.includes('seal')) want = 'Spare Parts';
-    else if (t) want = 'Industrial Process Pumps';
+    if (t.includes('seal')) want = 'Spare Parts';
+    else if (t) want = title;
   } else if (!want) {
     const map = [['voith', 'Voith'], ['milton', 'Milton Roy'], ['pleuger', 'Pleuger'], ['thermax', 'Thermax'], ['truwater', 'Truwater'], ['sunrui', 'Sunrui'], ['kojo', 'Industrial Valves'], ['kolink', 'Industrial Valves']];
     const hit = map.find(m => t.includes(m[0])) || (/^nov\b/.test(t) ? ['nov', 'NOV'] : null);
