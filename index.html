@@ -908,7 +908,7 @@ a.nav-brand { text-decoration: none; cursor: pointer; }
 body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { color: #2f8ff0; }
 .navbar.scrolled .nav-brand-text .name, .navbar.scrolled .nav-brand-text .sub { font-size: 21px; }
 @media (max-width: 1100px) { .nav-brand-text .name, .nav-brand-text .sub { font-size: 20px; } }
-@media (max-width: 1240px) {
+@media (max-width: 1280px) {
   .nav-links { display: none; margin-left: 0; }
   .hamburger { display: flex; }
   .company-menu { display: none; }
@@ -922,10 +922,10 @@ body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { co
 /* remove straight red/blue line under navbar */
 .navbar, .navbar.scrolled, body.wtc-active .navbar { border-bottom: none !important; }
 .mobile-menu { border-bottom: none; }
-@media (min-width: 1241px) {
+@media (min-width: 1281px) {
   .nav-brand-text { flex-wrap: nowrap; max-width: none; }
-  .nav-brand-text .name, .nav-brand-text .sub { font-size: clamp(16px, calc((100vw - 885px) / 19), 27px); }
-  .navbar.scrolled .nav-brand-text .name, .navbar.scrolled .nav-brand-text .sub { font-size: clamp(16px, calc((100vw - 885px) / 19), 22px); }
+  .nav-brand-text .name, .nav-brand-text .sub { font-size: clamp(16px, calc((100vw - 925px) / 19.8), 27px); }
+  .navbar.scrolled .nav-brand-text .name, .navbar.scrolled .nav-brand-text .sub { font-size: clamp(16px, calc((100vw - 925px) / 19.8), 22px); }
 }
 </style>
 </head>
@@ -2623,6 +2623,32 @@ document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el 
     });
     apply();
   });
+})();
+
+// ===== Fit the wordmark so it never touches the nav links =====
+(function () {
+  function fit() {
+    const text = document.querySelector('.nav-brand-text');
+    const links = document.querySelector('.nav-links');
+    if (!text || !links) return;
+    const parts = text.querySelectorAll('.name, .sub');
+    parts.forEach(p => p.style.fontSize = '');
+    if (getComputedStyle(links).display === 'none') return;
+    let fs = parseFloat(getComputedStyle(parts[0]).fontSize);
+    let guard = 40;
+    while (guard-- > 0 && fs > 13 && text.getBoundingClientRect().right > links.getBoundingClientRect().left - 28) {
+      fs -= 0.5;
+      parts.forEach(p => p.style.fontSize = fs + 'px');
+    }
+  }
+  window.fitWordmark = fit;
+  let t;
+  const later = () => { clearTimeout(t); t = setTimeout(fit, 380); };
+  window.addEventListener('resize', later);
+  window.addEventListener('scroll', later, { passive: true });
+  window.addEventListener('load', later);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
+  document.addEventListener('click', later);
 })();
 </script>
 </body>
