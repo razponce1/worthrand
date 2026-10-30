@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://razponce1.github.io/wpc/">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --red: #CC0000;
@@ -894,6 +894,28 @@ body.wtc-active .company-switch .company-dropdown-item.active { background: var(
   .nav-logo-img { height: 54px; }
   .navbar.scrolled .nav-logo-img { height: 44px; }
 }
+
+/* ===== Wordmark (red lettering with white shadow), clickable ===== */
+a.nav-brand { text-decoration: none; cursor: pointer; }
+.nav-brand-text { display: flex; flex-wrap: wrap; column-gap: 0.3em; max-width: 36vw; }
+.nav-brand-text .name, .nav-brand-text .sub {
+  font-family: 'Alfa Slab One', 'Rockwell Extra Bold', 'Rockwell', Georgia, serif;
+  font-weight: 400; font-variant-caps: small-caps; text-transform: none;
+  font-size: 27px; line-height: 1.1; letter-spacing: 0.02em; white-space: nowrap;
+  color: #e00000;
+  text-shadow: 2px 2px 0 #fff, 3px 3px 0 hsla(0,0%,100%,0.6), 4px 4px 4px rgba(0,0,0,0.5);
+}
+body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { color: #1e7bd8; }
+.navbar.scrolled .nav-brand-text .name, .navbar.scrolled .nav-brand-text .sub { font-size: 21px; }
+@media (max-width: 1100px) { .nav-brand-text .name, .nav-brand-text .sub { font-size: 20px; } }
+@media (max-width: 1240px) {
+  .nav-links { display: none; margin-left: 0; }
+  .hamburger { display: flex; }
+  .company-menu { display: none; }
+  .company-switch { display: inline-flex; }
+}
+.nav-links { flex-shrink: 0; }
+.nav-links a { white-space: nowrap; }
 </style>
 </head>
 <body class="preloading">
@@ -915,13 +937,13 @@ body.wtc-active .company-switch .company-dropdown-item.active { background: var(
 <!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="nav-left">
-    <div class="nav-brand">
+    <a href="#home" class="nav-brand" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
       <img src="./images/logo.png" alt="Logo" class="nav-logo-img" id="navLogo">
       <div class="nav-brand-text">
-        <div class="name" id="navName">WORTHRAND</div>
+        <div class="name" id="navName">WorthRand</div>
         <div class="sub" id="navSub">Petropower Corporation</div>
       </div>
-    </div>
+    </a>
     <div class="company-switch" role="group" aria-label="Choose company">
       <button type="button" class="company-dropdown-item active" data-company="wpc" onclick="switchCompany('wpc', event); event.stopPropagation();">WPC</button>
       <button type="button" class="company-dropdown-item" data-company="wtc" onclick="switchCompany('wtc', event); event.stopPropagation();">WTC</button>
@@ -2112,14 +2134,14 @@ function applyCompanySwitch(company) {
   const suffix = company === 'wtc' ? '-wtc' : '';
 
   if (company === 'wpc') {
-    document.getElementById('navName').textContent = 'WORTHRAND';
+    document.getElementById('navName').textContent = 'WorthRand';
     document.getElementById('navSub').textContent = 'Petropower Corporation';
     document.getElementById('navServicesLink').textContent = 'Services';
     swapLogo('./images/logo.png');
     document.getElementById('navbar').classList.remove('wtc-theme');
     document.body.classList.remove('wtc-active');
   } else {
-    document.getElementById('navName').textContent = 'WORTHWATER';
+    document.getElementById('navName').textContent = 'WorthWater';
     document.getElementById('navSub').textContent = 'Technology Corporation';
     document.getElementById('navServicesLink').textContent = 'Products';
     swapLogo('./images/logo-wtc.png');
