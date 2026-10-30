@@ -927,6 +927,12 @@ body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { co
   .nav-brand-text .name, .nav-brand-text .sub { font-size: clamp(16px, calc((100vw - 925px) / 19.8), 27px); }
   .navbar.scrolled .nav-brand-text .name, .navbar.scrolled .nav-brand-text .sub { font-size: clamp(16px, calc((100vw - 925px) / 19.8), 22px); }
 }
+.clients-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; }
+.client-logo { width: 200px; height: 104px; display: flex; align-items: center; justify-content: center; padding: 14px 18px; background: white; border: 1px solid var(--gray-border); border-radius: 14px; transition: 0.25s ease; }
+.client-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+.client-logo:hover { box-shadow: 0 10px 24px hsla(0,0%,0%,0.09); transform: translateY(-3px); border-color: var(--red); }
+@media (max-width: 600px) { .client-logo { width: calc(50% - 9px); height: 90px; padding: 10px 12px; } .clients-grid { gap: 12px; } }
+@media (max-width: 800px) { .nav-brand-text { display: none !important; } }
 </style>
 </head>
 <body class="preloading">
@@ -1369,6 +1375,41 @@ body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { co
       <div class="why-card fade-in"><div class="why-num">27</div><div class="why-label">Years in Business (since 1999)</div></div>
       <div class="why-card fade-in"><div class="why-num">10</div><div class="why-label">Product Lines</div></div>
       <div class="why-card fade-in"><div class="why-num">100%</div><div class="why-label">Filipino-Owned &amp; SEC Registered</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS WPC -->
+<section class="section" id="clients" style="background: white;">
+  <div class="section-inner">
+    <div class="section-header" style="text-align:center;">
+      <div class="section-eyebrow">Trusted By</div>
+      <h2 class="section-title">Our Clients</h2>
+    </div>
+    <div class="clients-grid">
+      <div class="client-logo fade-in"><img src="./images/clients/petron.png" alt="Petron" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/aboitiz-power.png" alt="Aboitiz Power" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/shell.png" alt="Shell" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/team-energy.png" alt="Team Energy" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/jg-summit-petrochemical.png" alt="JG Summit Petrochemical" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/gnpower.png" alt="GNPower" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/energy-development-corp.png" alt="Energy Development Corporation" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/unioil.png" alt="Unioil" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/fdc.png" alt="FDC" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/dm-consunji.png" alt="D.M. Consunji, Inc." loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/phoenix.png" alt="Phoenix" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/ams.png" alt="AMS" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/manila-water.png" alt="Manila Water" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/minergy-balingasag.png" alt="Minergy Power Corporation – Balingasag Power Station" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/siemens.png" alt="Siemens" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/peter-paul.png" alt="Peter Paul" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/coca-cola.png" alt="Coca-Cola" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/philex-mining.png" alt="Philex Mining Corporation" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/columbias.png" alt="Columbia's" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/biscom.png" alt="BISCOM" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/maynilad.png" alt="Maynilad" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/total.png" alt="Total" loading="lazy"></div>
+      <div class="client-logo fade-in"><img src="./images/clients/jgc-philippines.png" alt="JGC Philippines, Inc." loading="lazy"></div>
     </div>
   </div>
 </section>
