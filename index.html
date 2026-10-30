@@ -922,6 +922,11 @@ body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { co
 /* remove straight red/blue line under navbar */
 .navbar, .navbar.scrolled, body.wtc-active .navbar { border-bottom: none !important; }
 .mobile-menu { border-bottom: none; }
+@media (min-width: 1241px) {
+  .nav-brand-text { flex-wrap: nowrap; max-width: none; }
+  .nav-brand-text .name, .nav-brand-text .sub { font-size: clamp(16px, calc((100vw - 885px) / 19), 27px); }
+  .navbar.scrolled .nav-brand-text .name, .navbar.scrolled .nav-brand-text .sub { font-size: clamp(16px, calc((100vw - 885px) / 19), 22px); }
+}
 </style>
 </head>
 <body class="preloading">
