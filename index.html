@@ -10,8 +10,9 @@
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="Worthrand Petropower & Worthwater Technology Corporation">
 <meta property="og:description" content="100% Filipino-owned companies supplying world-class industrial equipment in the Philippines since 1996.">
-<meta property="og:url" content="https://razponce1.github.io/wpc/">
+<meta property="og:url" content="https://razponce1.github.io/worthrand/">
 <meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="./images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -1059,7 +1060,7 @@ body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { co
         <div class="hero-stat-row">
           <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">Filipino Owned</div></div>
           <div class="hero-stat"><div class="hero-stat-num">50+</div><div class="hero-stat-label">Team Members</div></div>
-          <div class="hero-stat"><div class="hero-stat-num">27</div><div class="hero-stat-label">Years Since 1999</div></div>
+          <div class="hero-stat"><div class="hero-stat-num" data-years-since="1999">27</div><div class="hero-stat-label">Years Since 1999</div></div>
           <div class="hero-stat"><div class="hero-stat-num">10</div><div class="hero-stat-label">Product Lines</div></div>
         </div>
         <div class="hero-badge">
@@ -1372,7 +1373,7 @@ body.wtc-active .nav-brand-text .name, body.wtc-active .nav-brand-text .sub { co
     </div>
     <div class="why-grid">
       <div class="why-card fade-in"><div class="why-num">50</div><div class="why-label">Personnel Strong</div></div>
-      <div class="why-card fade-in"><div class="why-num">27</div><div class="why-label">Years in Business (since 1999)</div></div>
+      <div class="why-card fade-in"><div class="why-num" data-years-since="1999">27</div><div class="why-label">Years in Business (since 1999)</div></div>
       <div class="why-card fade-in"><div class="why-num">10</div><div class="why-label">Product Lines</div></div>
       <div class="why-card fade-in"><div class="why-num">100%</div><div class="why-label">Filipino-Owned &amp; SEC Registered</div></div>
     </div>
@@ -2693,6 +2694,11 @@ document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right').forEach(el 
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(later);
   document.addEventListener('click', later);
 })();
+
+// Years in business: computed from the founding year so it never goes stale
+document.querySelectorAll('[data-years-since]').forEach(el => {
+  el.textContent = new Date().getFullYear() - parseInt(el.dataset.yearsSince, 10);
+});
 </script>
 </body>
 </html>

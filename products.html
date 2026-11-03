@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Products — Worthrand Petropower Corporation</title>
 <meta name="description" content="Worthrand Petropower Corporation — Ruhrpumpen pump partner in the Philippines. Browse our range of industrial pumps and systems.">
+<link rel="icon" type="image/png" href="./images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Montserrat:wght@400;500;600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
   --red: #CC0000;
@@ -257,19 +258,50 @@ footer { background: var(--navy-dark); color: white; padding: 40px; margin-top: 
 .footer-links a { font-size: 13px; color: hsla(0,0%,100%,0.6); transition: 0.2s ease; }
 .footer-links a:hover { color: white; }
 .footer-copy { font-size: 12px; color: hsla(0,0%,100%,0.4); width: 100%; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid hsla(0,0%,100%,0.1); }
+
+/* ===== v3 nav: bigger logo, wordmark, no red line ===== */
+.navbar { height: 96px; border-bottom: none; }
+.nav-logo-img { height: 72px; }
+a.nav-brand { text-decoration: none; cursor: pointer; }
+.nav-brand-text { display: flex; flex-wrap: wrap; column-gap: 0.3em; max-width: 320px; }
+.nav-brand-text .name, .nav-brand-text .sub {
+  font-family: 'Alfa Slab One', 'Rockwell Extra Bold', Georgia, serif; font-weight: 400;
+  font-variant-caps: small-caps; text-transform: none; letter-spacing: 0.02em; white-space: nowrap;
+  font-size: 20px; line-height: 1.1; color: #ff1f1f; text-shadow: 1px 1px 0 #fff, 2px 2px 0 hsla(0,0%,100%,0.7);
+}
+.nav-links { flex-shrink: 0; } .nav-links a { white-space: nowrap; }
+.page-hero { padding-top: 150px; }
+@media (min-width: 1281px) {
+  .nav-brand-text { flex-wrap: nowrap; max-width: none; }
+  .nav-brand-text .name, .nav-brand-text .sub { font-size: clamp(16px, calc((100vw - 925px) / 19.8), 27px); }
+}
+@media (max-width: 1060px) { .nav-brand-text { display: none; } }
+@media (max-width: 760px) {
+  .navbar { padding: 0 16px; height: 80px; } .nav-logo-img { height: 54px; }
+  .nav-links li:not(:first-child):not(:last-child) { display: none; }
+  .page-hero { padding-top: 120px; }
+}
+/* product sheets */
+.product-img.has-thumb { height: 190px; overflow: hidden; align-items: flex-start; }
+.product-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.product-img.has-thumb .product-cat-tag { z-index: 2; }
+.sheet-list { display: flex; flex-direction: column; gap: 14px; }
+.sheet-list a { display: block; border: 1px solid var(--gray-border); border-radius: 12px; overflow: hidden; }
+.sheet-list img { display: block; width: 100%; height: auto; }
+.sheet-note { font-size: 13px; color: var(--gray); background: var(--off-white); border-radius: 10px; padding: 14px 16px; line-height: 1.6; }
 </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="nav-brand">
+  <a href="./index.html" class="nav-brand" aria-label="Back to home">
     <img src="./images/logo.png" alt="WPC Logo" class="nav-logo-img">
     <div class="nav-brand-text">
-      <div class="name">WORTHRAND</div>
+      <div class="name">WorthRand</div>
       <div class="sub">Petropower Corporation</div>
     </div>
-  </div>
+  </a>
   <ul class="nav-links">
     <li><a href="./index.html">Home</a></li>
     <li><a href="./index.html#about">About</a></li>
@@ -436,6 +468,19 @@ const PRODUCTS = [
   }
 ];
 
+const SHEETS = {
+  'Overhung Pumps': ['chemical-pumps-1','industrial-pumps-1','industrial-pumps-2'],
+  'Horizontal Pumping System': ['horizontal-pumps-1','other-pumps-2'],
+  'Between Bearing Pumps': ['other-pumps-1'],
+  'Vertical Pumps': ['vertical-turbine-1','vertical-multistage-1'],
+  'Magnetic Driven Pumps': ['chemical-pumps-2'],
+  'Fire Pumps & Systems': ['fire-pumps-1','fire-pumps-2','fire-pumps-3','split-case-fire-pumps-1','split-case-fire-pumps-2'],
+  'Pleuger Submersible Pumps': ['submersible-pumps-1','submersible-pumps-2','submersible-pumps-3','submersible-pumps-4','@pleuger-1'],
+  'Special Service': ['quarrying-pumps-1','quarrying-pumps-2','quarrying-pumps-3','submersible-nonclog-1']
+};
+function sheetPaths(p) {
+  return (SHEETS[p.name] || []).map(n => n.startsWith('@') ? './images/principals/' + n.slice(1) + '.jpg' : './images/wpc-products/' + n + '.jpg');
+}
 let activeFilter = 'all';
 
 function renderProducts(filter) {
@@ -443,8 +488,8 @@ function renderProducts(filter) {
   const filtered = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.cat === filter);
   grid.innerHTML = filtered.map(p => `
     <div class="product-card" onclick="openModal(${p.id})">
-      <div class="product-img" style="background: ${p.color};">
-        ${p.emoji}
+      <div class="product-img${sheetPaths(p).length ? ' has-thumb' : ''}" style="background: ${p.color};">
+        ${sheetPaths(p).length ? `<img class="product-thumb" src="${sheetPaths(p)[0]}" alt="${p.name}" loading="lazy">` : p.emoji}
         <span class="product-cat-tag">${p.catLabel}</span>
       </div>
       <div class="product-body">
@@ -472,6 +517,12 @@ function openModal(id) {
     <div class="modal-name">${p.name}</div>
     <div class="modal-cat">${p.catLabel}</div>
     <p class="modal-desc">${p.desc}</p>
+    <div class="modal-section">
+      <div class="modal-section-title">Product Sheets</div>
+      ${sheetPaths(p).length
+        ? `<div class="sheet-list">${sheetPaths(p).map((src, i) => `<a href="${src}" target="_blank" rel="noopener"><img src="${src}" alt="${p.name} product sheet ${i + 1}" loading="lazy"></a>`).join('')}</div>`
+        : `<div class="sheet-note">The product sheet for ${p.name} is not yet available online. Request a quote below and our team will send you the details.</div>`}
+    </div>
     <div class="modal-section">
       <div class="modal-section-title">Key Features</div>
       <ul class="feature-list">${p.features.map(f => `<li>${f}</li>`).join('')}</ul>
